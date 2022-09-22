@@ -35,22 +35,36 @@ def get_spotify_data():
     return spotify_df, music_artists, genres
 
 
+def favourite(list_of_interest):
+    '''docstring'''
+    value_of_interest = format_list_values([input('\n')])
+    while value_of_interest[0] not in list_of_interest \
+            and value_of_interest[0] != '':
+        value_of_interest = format_list_values([input('Invalid value. Enter'
+                                                 ' a new value:\n')])
+    return (value_of_interest[0])
+
+
 def favourite_artist(music_artists):
     '''docstring'''
     print('Welcome to the Spotify Song Recommender!\n'
           'We\'ll help you picksome songs that will '
           'become your new favourites!\n\n'
           'Firstly we need to ask you some questions!'
-          '\n')
-    music_artist = format_list_values([input('1. Who is your favourite music'
-                                             'artist?\nExamples include Cardi'
-                                             ' B, Arctic Monkeys and Beyonce:'
-                                             '\n\n')])
-    while music_artist[0] not in music_artists and music_artist[0] != '':
-        music_artist = format_list_values([input('Invalid value. Please enter'
-                                                 ' a new music artist:\n')])
-    return (music_artist[0])
+          '\n1. Who is your favourite music artist?\n'
+          'Examples include Cardi B, The 1975 and '
+           'Beyonce:\n')
+    music_artist = favourite(music_artists)
+    return music_artist
     
+def favourite_genre(genres):
+    '''docstring'''
+    print('\nNext up is pick your favourite genre. '
+          'Pick from one of the following:\n')
+    list_of_genres = ', '.join(str(genre) for genre in genres)
+    print(list_of_genres + '\n\n')
+    genre = favourite(genres)
+    return genre
 # ask questions re favourite song, genre, song of all time 
 # (for song ask for artist first and then print all of their songs on console)
 
@@ -71,6 +85,7 @@ def favourite_artist(music_artists):
 # ask to play again
 def main():
     spotify, music_artists, genres = get_spotify_data()
-    favourite_singer = favourite_artist(music_artists)
+    singer = favourite_artist(music_artists)
+    genre = favourite_genre(genres)
 
 main()
