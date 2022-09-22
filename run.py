@@ -13,7 +13,8 @@ SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
-spotify = pd.read_csv()
+spotify_df = pd.read_csv('SpotifyFeatures.csv')
+print(spotify_df.head(10))
 
 # ask questions re favourite song, genre, song of all time 
 # (for song ask for artist first and then print all of their songs on console)
