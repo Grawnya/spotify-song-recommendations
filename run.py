@@ -13,6 +13,10 @@
 
 # randomly select up to 20 to be returned
 
+# paste name and some details of each on terminal 1 at a time - use track class to save details
+
+# ask for another one
+
 # paste them into google sheet
 
 # open the link in separate tab
