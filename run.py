@@ -14,12 +14,24 @@ GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
 def get_spotify_data():
+    '''
+    get list of music artists and genres from database and
+    also return the database
+    '''
     spotify_df = pd.read_csv('SpotifyFeatures.csv')
     music_artists = spotify_df['artist_name'].unique()
+    music_artists = [each.lower() for each in music_artists]
     genres = spotify_df['genre'].unique()
+    return spotify_df, music_artists, genres
 
 
-
+def favourite_artist(database):
+    '''docstring'''
+    print('Welcome to the Spotify Song Recommender!\n'
+          'We\'ll help you picksome songs that will '
+          'become your new favourites!\n\n'
+          'Firstly we need to ask you some questions!'
+          '1. Who is your favourite music artist?\n')
 # ask questions re favourite song, genre, song of all time 
 # (for song ask for artist first and then print all of their songs on console)
 
@@ -39,8 +51,6 @@ def get_spotify_data():
 
 # ask to play again
 def main():
-    # spotify_df = pd.read_csv('SpotifyFeatures.csv')
-    # print(spotify_df.head(5))
-    get_spotify_data()
+    spotify, music_artists, genres = get_spotify_data()
 
 main()
