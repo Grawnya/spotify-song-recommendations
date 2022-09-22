@@ -1,4 +1,5 @@
 import gspread
+import pandas as pd
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -7,12 +8,12 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDENTIALS = Credentials.from_service_account_file('creds.json')
+CREDENTIALS = Credentials.from_service_account_file('credentials.json')
 SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
-# read spotify tracks db from kaggle
+spotify = pd.read_csv()
 
 # ask questions re favourite song, genre, song of all time 
 # (for song ask for artist first and then print all of their songs on console)
