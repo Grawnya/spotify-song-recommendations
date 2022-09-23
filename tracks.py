@@ -8,4 +8,5 @@ class Track:
     
     def artist_exists(self):
         '''docstring'''
-        if song
+        if self.artist_name in songs:
+            print('artist exists')
