@@ -14,8 +14,9 @@ SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
-# pick all songs from their favourite artist and all songs that are from that genre and meet the mood criteria
-
+def make_recommendations(singer, genre, tracks, mood):
+    '''docstring'''
+    print('to do')
 # randomly select up to 20 to be returned
 
 # paste name and some details of each on terminal 1 at a time - use Track class to save details
