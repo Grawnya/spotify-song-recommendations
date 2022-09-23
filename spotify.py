@@ -113,7 +113,8 @@ class Track(Spotify):
             'Choose an artist\' discography you want to see:')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
-        list_of_tracks = self._tracks(singer)
+        list_of_tracks_not_unique = self._tracks(singer)
+        list_of_tracks = list(set(list_of_tracks_not_unique))
         if len(list_of_tracks) < 11:
             print(f'\nThe following tracks exist from {singer}\n')
             tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
@@ -122,3 +123,8 @@ class Track(Spotify):
               ' it is in the list: (Make sure it is spelt correctly)')
         track = self._favourite(list_of_tracks.values())
         return track
+
+class Mood(Spotify):
+
+    def mood_for(self):
+        pass

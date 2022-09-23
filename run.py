@@ -14,14 +14,6 @@ SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
    
-
-
-
-
-
-    
-
-
 # ask mood questions - check if valid y or n
 
 # pick all songs from their favourite artist and all songs that are from that genre and meet the mood criteria
@@ -40,6 +32,6 @@ SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 def main():
     # singer = Artist().favourite_artist_exists()
     # genre = Genre().favourite_genre()
-    tracks = Track().favourite_track()
+    # tracks = Track().favourite_track()
 
 main()
