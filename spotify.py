@@ -38,6 +38,22 @@ class Spotify:
                                                     ' a new value:\n')])
         return (value_of_interest[0])
 
+    def _closed_question_answer_checks(y_or_n):
+        '''
+        Checks if the user inputs a valid y (yes) or n (no) value
+        into the terminal
+        '''
+        remove_whitespace = y_or_n.replace(' ', '')
+        while remove_whitespace.isalpha() is False or \
+                remove_whitespace.lower() not in ['y', 'yes', 'n', 'no']:
+            remove_whitespace = input('\nAnswer not valid. Please enter y or n:\n')
+            remove_whitespace.replace(' ', '')
+        if remove_whitespace.lower() == 'yes':
+            remove_whitespace = 'y'
+        elif remove_whitespace.lower() == 'no':
+            remove_whitespace = 'n'
+        return remove_whitespace.lower()
+
 class Artist(Spotify):
 
     def favourite_artist_exists(self):
@@ -126,5 +142,34 @@ class Track(Spotify):
 
 class Mood(Spotify):
 
-    def mood_for(self):
-        pass
+    def mood_for(self, category):
+        '''
+        Asks the user about their mood and set it to
+        a value comparison 
+        '''
+        task_asked_about = self._closed_question_answer_checks(question)
+        if task_asked_about == 'y':
+            task_asked_about = f'min_{spotify_category}'
+        else:
+            task_asked_about = f'max_{spotify_category}'
+        return task_asked_about
+
+
+    def song_style_questions():
+        '''
+        Asks the user if they want to dance,
+        focus and listen to something popular
+        '''
+        print('\n\nWe just need to ask a few more questions to pick out'
+            '\nthe perfect songs for you!\n'
+            'These ones are more mood based\n\n*******\n\n')
+        dancing = want_to(input('1. Do you feel like dancing at the moment?'
+                        ' y or n\n'),
+                        'danceability')
+        focus = want_to(input('\n2. Do you want to focus at the moment? y or n\n'),
+                        'instrumentalness')
+        popular = want_to(input('\n3. Do you want to listen to something popular?'
+                        ' y or n\n'),
+                        'popularity')
+        mood_values = {dancing: 0.5, focus: 0.5, popular: 50}
+        return mood_values
