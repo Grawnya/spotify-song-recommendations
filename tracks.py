@@ -1,9 +1,11 @@
+import regex
+
 class Track:
 
-    def __init__(self, artist_name, song_title, database):
+    def __init__(self, artist_name, songs):
         self.artist_name = artist_name
-        self.song_title = song_title
-        self.database = database
+        self.songs = songs
     
-    def exists(self):
+    def artist_exists(self):
         '''docstring'''
+        if song

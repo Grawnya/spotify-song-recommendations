@@ -1,5 +1,6 @@
 import gspread
 import readline
+from tracks import *
 import pandas as pd
 from google.oauth2.service_account import Credentials
 
@@ -71,7 +72,18 @@ def favourite_genre(genres):
     return genre
 
 
-def favourite_track(tracks):
+def favourite_track(list_of_all_artists, tracks):
+    '''docstring'''
+    print('\nNext step is to search for your favourite song!\n'
+          'Firstly enter the artist who sings your favourite '
+          'song and then we\'ll show you all their songs in '
+          'our database. Pick your favourite song or you can '
+          'pick another artist if you don\'t like the choice\n'
+          'Choose an artist\' discography you want to see:)
+    unique_music_artists = list(set(list_of_all_artists))
+    artist_who_sings = favourite(unique_music_artists)
+    picked_track = Track(artist_who_sings, tracks)
+    
 
 
 # ask mood questions - check if valid y or n
