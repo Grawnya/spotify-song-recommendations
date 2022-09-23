@@ -33,7 +33,7 @@ class Spotify:
         '''docstring'''
         value_of_interest = self._format_list_values([input('\n')])
         while value_of_interest[0] not in list_of_interest \
-                and value_of_interest[0] != '':
+                or value_of_interest[0] == '':
             value_of_interest = self._format_list_values([input('Invalid value. Enter'
                                                     ' a new value:\n')])
         return (value_of_interest[0])
@@ -80,21 +80,26 @@ class Track(Spotify):
     def _remove_feature(self, song):
         '''docstring'''
         if '(feat' in song:
-            song = song.split('(feat.')[0]
+            song = song.split('(feat')[0]
         elif 'feat' in song:
-            song = song.split('feat.')[0]
-        elif ' (' in song:
-            song = song.split('feat.')[0]
+            song = song.split('feat')[0]
+        if ' (' in song:
+            song = song.split(' (')[0]
+        if ' -' in song:
+            song = song.split(' -')[0]
+        song.replace('?', '')
+        song = song.strip(' ')
         return song
 
     def _tracks(self, artist):
         '''docstring'''
         appears_in_db = self._song_position(artist)
         print(f'\n{artist} has {len(appears_in_db)} songs in our database')
-        track_names = []
+        track_names = {}
         for index, song_title in enumerate(self.tracks):
             if index in appears_in_db:
-                track_names.append(self._remove_feature(song_title))
+                adjusted_song_title = self._remove_feature(song_title)
+                track_names[index] = adjusted_song_title
         return track_names
 
 
@@ -115,5 +120,5 @@ class Track(Spotify):
             print(tracks_to_print + '\n\n')
         print('\nThe track list is too long to print.\nGuess a song to see if'
               ' it is in the list: (Make sure it is spelt correctly)')
-        track = self._favourite(list_of_tracks)
-        return list_of_tracks
+        track = self._favourite(list_of_tracks.values())
+        return track
