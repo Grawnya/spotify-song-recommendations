@@ -15,15 +15,7 @@ GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
    
 
-def favourite_genre(genres):
-    '''docstring'''
-    print('\nNext up is pick your favourite genre. '
-          'Pick from one of the following:\n')
-    unique_genres = list(set(genres))
-    list_of_genres = ', '.join(str(genre) for genre in unique_genres)
-    print(list_of_genres + '\n\n')
-    genre = favourite(unique_genres)
-    return genre
+
 
 
 def favourite_track(list_of_all_artists, tracks):
@@ -56,7 +48,8 @@ def favourite_track(list_of_all_artists, tracks):
 
 # ask to play again
 def main():
-    singer = Artist().favourite_artist_exists()
-    print(singer)
+    # singer = Artist().favourite_artist_exists()
+    genre = Genre().favourite_genre()
+    print(genre)
 
 main()

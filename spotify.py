@@ -26,7 +26,8 @@ class Spotify:
         replace_apostrophe = [each.replace("'", '') for each in replace_and]
         replace_full_stop = [each.replace('.', '') for each in replace_apostrophe]
         replace_e = [each.replace('é', 'e') for each in replace_full_stop]
-        return replace_e
+        replace_whitespace = [each.strip(' ') for each in replace_e]
+        return replace_whitespace
     
     def _favourite(self, list_of_interest):
         '''docstring'''
@@ -50,6 +51,18 @@ class Artist(Spotify):
         unique_music_artists = list(set(self.music_artists))
         music_artist = self._favourite(unique_music_artists)
         return music_artist
+    
+class Genre(Spotify):
 
+    def favourite_genre(self):
+        '''docstring'''
+        print('\nNext up is pick your favourite genre. '
+            'Pick from one of the following:\n')
+        unique_genres = list(set(self.genres))
+        list_of_genres = ', '.join(str(genre) for genre in unique_genres)
+        print(list_of_genres + '\n\n')
+        genre = self._favourite(unique_genres)
+        return genre
+    
 
 # class Track(Spotify):
