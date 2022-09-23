@@ -18,17 +18,7 @@ SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
 
 
-def favourite_track(list_of_all_artists, tracks):
-    '''docstring'''
-    print('\nNext step is to search for your favourite song!\n'
-          'Firstly enter the artist who sings your favourite '
-          'song and then we\'ll show you all their songs in '
-          'our database. Pick your favourite song or you can '
-          'pick another artist if you don\'t like the choice\n'
-          'Choose an artist\' discography you want to see:')
-    unique_music_artists = list(set(list_of_all_artists))
-    artist_who_sings = favourite(unique_music_artists)
-    picked_track = Spotify(artist_who_sings, tracks)
+
     
 
 
@@ -49,7 +39,7 @@ def favourite_track(list_of_all_artists, tracks):
 # ask to play again
 def main():
     # singer = Artist().favourite_artist_exists()
-    genre = Genre().favourite_genre()
-    print(genre)
+    # genre = Genre().favourite_genre()
+    track = Track().favourite_track()
 
 main()

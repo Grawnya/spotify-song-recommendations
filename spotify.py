@@ -65,4 +65,32 @@ class Genre(Spotify):
         return genre
     
 
-# class Track(Spotify):
+class Track(Spotify):
+ 
+    def _song_position(self, artist_check):
+        '''docstring'''
+        artists_track_indices = []
+        i = 0
+        for each in self.music_artists:
+            if each == artist_check:
+                artists_track_indices.append(i)
+            i += 1
+        return artists_track_indices
+
+    def _tracks(self, artist):
+        '''docstring'''
+        
+
+
+    def favourite_track(self):
+        '''docstring'''
+        print('\nNext step is to search for your favourite song!\n'
+            'Firstly enter the artist who sings your favourite '
+            'song and then we\'ll show you all their songs in '
+            'our database. Pick your favourite song or you can '
+            'pick another artist if you don\'t like the choice\n'
+            'Choose an artist\' discography you want to see:')
+        unique_music_artists = list(set(self.music_artists))
+        singer = self._favourite(unique_music_artists)
+        appears_in_db = self._song_position(singer)
+        print(f'\n{singer} has {len(appears_in_db)} songs in our database')
