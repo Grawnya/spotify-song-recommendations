@@ -40,6 +40,6 @@ SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 def main():
     # singer = Artist().favourite_artist_exists()
     # genre = Genre().favourite_genre()
-    track = Track().favourite_track()
+    tracks = Track().favourite_track()
 
 main()

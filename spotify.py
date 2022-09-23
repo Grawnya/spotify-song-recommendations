@@ -67,19 +67,35 @@ class Genre(Spotify):
 
 class Track(Spotify):
  
-    def _song_position(self, artist_check):
+    def _song_position(self, artist):
         '''docstring'''
         artists_track_indices = []
         i = 0
         for each in self.music_artists:
-            if each == artist_check:
+            if each == artist:
                 artists_track_indices.append(i)
             i += 1
         return artists_track_indices
 
+    def _remove_feature(self, song):
+        '''docstring'''
+        if '(feat' in song:
+            song = song.split('(feat.')[0]
+        elif 'feat' in song:
+            song = song.split('feat.')[0]
+        elif ' (' in song:
+            song = song.split('feat.')[0]
+        return song
+
     def _tracks(self, artist):
         '''docstring'''
-        
+        appears_in_db = self._song_position(artist)
+        print(f'\n{artist} has {len(appears_in_db)} songs in our database')
+        track_names = []
+        for index, song_title in enumerate(self.tracks):
+            if index in appears_in_db:
+                track_names.append(self._remove_feature(song_title))
+        return track_names
 
 
     def favourite_track(self):
@@ -92,5 +108,12 @@ class Track(Spotify):
             'Choose an artist\' discography you want to see:')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
-        appears_in_db = self._song_position(singer)
-        print(f'\n{singer} has {len(appears_in_db)} songs in our database')
+        list_of_tracks = self._tracks(singer)
+        if len(list_of_tracks) < 11:
+            print(f'\nThe following tracks exist from {singer}\n')
+            tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
+            print(tracks_to_print + '\n\n')
+        print('\nThe track list is too long to print.\nGuess a song to see if'
+              ' it is in the list: (Make sure it is spelt correctly)')
+        track = self._favourite(list_of_tracks)
+        return list_of_tracks
