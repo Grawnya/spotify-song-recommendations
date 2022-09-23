@@ -1,3 +1,4 @@
+import operator
 import regex
 import pandas as pd
 
@@ -38,7 +39,7 @@ class Spotify:
                                                     ' a new value:\n')])
         return (value_of_interest[0])
 
-    def _closed_question_answer_checks(y_or_n):
+    def _closed_question_answer_checks(self, y_or_n):
         '''
         Checks if the user inputs a valid y (yes) or n (no) value
         into the terminal
@@ -142,20 +143,21 @@ class Track(Spotify):
 
 class Mood(Spotify):
 
-    def mood_for(self, category):
+    def _mood_for(self, question, parameter, mood_values_dict):
         '''
         Asks the user about their mood and set it to
         a value comparison 
         '''
         task_asked_about = self._closed_question_answer_checks(question)
         if task_asked_about == 'y':
-            task_asked_about = f'min_{spotify_category}'
-        else:
-            task_asked_about = f'max_{spotify_category}'
-        return task_asked_about
+            task_asked_about = '>'
+        elif task_asked_about == 'n':
+            task_asked_about = '<'
+        mood_values_dict[parameter] = task_asked_about
+        return mood_values_dict
 
 
-    def song_style_questions():
+    def song_style_questions(self):
         '''
         Asks the user if they want to dance,
         focus and listen to something popular
@@ -163,13 +165,17 @@ class Mood(Spotify):
         print('\n\nWe just need to ask a few more questions to pick out'
             '\nthe perfect songs for you!\n'
             'These ones are more mood based\n\n*******\n\n')
-        dancing = want_to(input('1. Do you feel like dancing at the moment?'
+        mood_values = {}
+        dancing = self._mood_for(input('1. Do you feel like dancing at the moment?'
                         ' y or n\n'),
-                        'danceability')
-        focus = want_to(input('\n2. Do you want to focus at the moment? y or n\n'),
-                        'instrumentalness')
-        popular = want_to(input('\n3. Do you want to listen to something popular?'
+                        'danceability',
+                        mood_values)
+        focus = self._mood_for(input('\n2. Do you want to focus at the moment? y or n\n'),
+                        'instrumentalness',
+                        mood_values)
+        popular = self._mood_for(input('\n3. Do you want to listen to something popular?'
                         ' y or n\n'),
-                        'popularity')
-        mood_values = {dancing: 0.5, focus: 0.5, popular: 50}
+                        'popularity',
+                        mood_values)
+        print(mood_values)
         return mood_values
