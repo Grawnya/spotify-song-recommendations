@@ -30,9 +30,10 @@ def get_spotify_data():
     also return the database
     '''
     spotify_df = pd.read_csv('SpotifyFeatures.csv')
-    music_artists = format_list_values(spotify_df['artist_name'].unique())
-    genres = format_list_values(spotify_df['genre'].unique())
-    return spotify_df, music_artists, genres
+    music_artists = format_list_values(spotify_df['artist_name'].to_list())
+    genres = format_list_values(spotify_df['genre'].to_list())
+    tracks = format_list_values(spotify_df['track_name'].to_list())
+    return spotify_df, music_artists, genres, tracks
 
 
 def favourite(list_of_interest):
@@ -54,19 +55,24 @@ def favourite_artist(music_artists):
           '\n1. Who is your favourite music artist?\n'
           'Examples include Cardi B, The 1975 and '
            'Beyonce:\n')
-    music_artist = favourite(music_artists)
+    unique_music_artists = list(set(music_artists))
+    music_artist = favourite(unique_music_artists)
     return music_artist
     
+
 def favourite_genre(genres):
     '''docstring'''
     print('\nNext up is pick your favourite genre. '
           'Pick from one of the following:\n')
-    list_of_genres = ', '.join(str(genre) for genre in genres)
+    unique_genres = list(set(genres))
+    list_of_genres = ', '.join(str(genre) for genre in unique_genres)
     print(list_of_genres + '\n\n')
-    genre = favourite(genres)
+    genre = favourite(unique_genres)
     return genre
-# ask questions re favourite song, genre, song of all time 
-# (for song ask for artist first and then print all of their songs on console)
+
+
+def favourite_track(tracks):
+
 
 # ask mood questions - check if valid y or n
 
@@ -84,7 +90,7 @@ def favourite_genre(genres):
 
 # ask to play again
 def main():
-    spotify, music_artists, genres = get_spotify_data()
+    spotify, music_artists, genres, tracks = get_spotify_data()
     singer = favourite_artist(music_artists)
     genre = favourite_genre(genres)
 
