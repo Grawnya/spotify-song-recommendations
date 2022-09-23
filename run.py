@@ -1,6 +1,6 @@
 import gspread
 import readline
-from tracks import *
+from spotify import *
 import pandas as pd
 from google.oauth2.service_account import Credentials
 
@@ -82,7 +82,7 @@ def favourite_track(list_of_all_artists, tracks):
           'Choose an artist\' discography you want to see:)
     unique_music_artists = list(set(list_of_all_artists))
     artist_who_sings = favourite(unique_music_artists)
-    picked_track = Track(artist_who_sings, tracks)
+    picked_track = Spotify(artist_who_sings, tracks)
     
 
 

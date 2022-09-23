@@ -1,6 +1,6 @@
 import regex
 
-class Track:
+class Spotify:
 
     def __init__(self, artist_name, songs):
         self.artist_name = artist_name
