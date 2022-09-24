@@ -89,4 +89,9 @@ def main():
         play_again = print_values(songs, play_again)
     print('\nThanks for playing! If you have any suggestions please send them to https://www.linkedin.com/in/grainne-donegan/')
 
-main()
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('\n\n*****\nYou interrupted the game, lets play again\n*****\n')
+        main()
