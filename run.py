@@ -1,4 +1,3 @@
-import string
 import gspread
 import readline
 import pandas as pd
@@ -44,16 +43,16 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
         recommendations = list_of_songs_to_choose_from
     if recommendations.shape[0] > 20:
         recommendations = recommendations.sample(20)
-    return recommendations
+    return recommendations.reset_index()
 
 def print_values(recommendations_df, play_again):
     '''docstring'''
     print('Here is the first recommendation:\n')
-    for index, row in df.iterrows():
+    for index, row in recommendations_df.iterrows():
         print(f'Song Name: {row.track_name}')
         print(f'Artist Name: {row.artist_name}')
-        print(f'Song Duration: {row.duration_ms // 60000} minutes and {row.duration_ms % 60000} seconds')
-        if index != len(recommendations_df.index) - 1:
+        print(f'Song Duration: {row.duration_ms // 60000} minutes and {round((row.duration_ms % 60000)/1000)} seconds\n')
+        if index != recommendations_df.shape[0] - 1:
             ask = input('Another one?... That is song recommendation: y or n\n')
             another_one = Spotify()._closed_question_answer_checks(ask)
             if another_one == 'y':
@@ -61,7 +60,7 @@ def print_values(recommendations_df, play_again):
             else:
                 break
     playing_again = input('Thanks for playing! Do you want to play again: y or n\n')
-    playing_again_check = Spotify()._closed_question_answer_checks(play_again)
+    playing_again_check = Spotify()._closed_question_answer_checks(playing_again)
     if playing_again_check == 'n':
         play_again = False
     return play_again
@@ -71,11 +70,9 @@ def add_to_worksheet(recommendations_df):
     song_worksheet = SHEET.worksheet('Songs')
     song_worksheet.clear()
     song_worksheet.update([recommendations_df.columns.values.tolist()] + recommendations_df.values.tolist())
+    print('\nHere is a list of all the recommended songs:\n')
     link_to_google_sheet = r'https://docs.google.com/spreadsheets/d/19APnfM8o7hUttAOnIaQ-mHoGC5tH-BnegAzFkqZ6FLk/edit?usp=sharing'
-    print('\nSong recommendations opening up in new tab\n')
     print(link_to_google_sheet)
-
-# ask to play again
 
 def main():
     play_again = True
@@ -85,8 +82,8 @@ def main():
         track, similar_tracks = Track().favourite_track()
         mood = Mood().song_style_questions()
         songs = make_song_recommendations(singer, their_song_indices_in_db, genre, track, similar_tracks, mood)
-        add_to_worksheet(songs)
         play_again = print_values(songs, play_again)
+    add_to_worksheet(songs)
     print('\nThanks for playing! If you have any suggestions please send them to https://www.linkedin.com/in/grainne-donegan/')
 
 if __name__ == '__main__':

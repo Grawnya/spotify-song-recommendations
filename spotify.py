@@ -1,3 +1,4 @@
+import string
 import operator
 import regex
 import pandas as pd
@@ -59,13 +60,14 @@ class Spotify:
 class Artist(Spotify):
 
     def _favourite_artist_exists(self):
-        print('Welcome to the Spotify Song Recommender!\n'
-          'We\'ll help you picksome songs that will '
-          'become your new favourites!\n\n'
+        print('\nWelcome to the Spotify Song Recommender!\n'
+          'We\'ll help you pick some songs that will '
+          'become your new favourites from our database'
+          ' of over 200,000 songs!\n\n'
           'Firstly we need to ask you some questions!'
           '\n1. Who is your favourite music artist?\n'
           'Examples include Cardi B, The 1975 and '
-           'Beyonce:\n')
+           'Beyonce:')
         unique_music_artists = list(set(self.music_artists))
         music_artist = self._favourite(unique_music_artists)
         return music_artist
