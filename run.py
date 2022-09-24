@@ -16,15 +16,18 @@ SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
-def make_song_recommendations(favourite_singer, favourite_genre, favourite_track, tracks_similar, mood):
+def make_song_recommendations(favourite_singer, singer_song_indices, favourite_genre, favourite_track, tracks_similar, mood):
     '''docstring'''
     df = Spotify().get_spotify_data()
+    # get all from singer
+    singer_songs = df.loc[singer_song_indices]
     # get all from genre
     genre_songs = df.loc[df['genre'] == favourite_genre]
-    # get all from singer
-    indics_of_songs = tracks_similar.keys()
-    artist_songs = df.loc[indics_of_songs]
-    list_of_songs_to_choose_from = pd.concat([genre_songs, artist_songs], ignore_index=True, axis=0)
+    # get all from similar track
+    indics_of_songs_tracks = tracks_similar.keys()
+    track_songs = df.loc[indics_of_songs_tracks]
+    list_of_songs_to_choose_from = pd.concat([singer_songs, genre_songs, track_songs], ignore_index=True, axis=0)
+    print(list_of_songs_to_choose_from)
     # from those rows, get all that fit mood
     # remove favourite track
 # randomly select up to 20 to be returned
@@ -39,7 +42,7 @@ def make_song_recommendations(favourite_singer, favourite_genre, favourite_track
 
 # ask to play again
 def main():
-    singer = Artist().favourite_artist_exists()
+    singer, their_song_indices_in_db = Artist().favourite_artist_songs()
     genre = Genre().favourite_genre()
     if genre != 'hip-hop':
         genre = string.capwords(genre)
@@ -47,6 +50,6 @@ def main():
         genre = 'Hip-Hop'
     track, similar_tracks = Track().favourite_track()
     mood = Mood().song_style_questions()
-    songs = make_song_recommendations(singer, genre, track, similar_tracks, mood)
+    songs = make_song_recommendations(singer, their_song_indices_in_db, genre, track, similar_tracks, mood)
 
 main()

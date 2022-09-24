@@ -57,7 +57,7 @@ class Spotify:
 
 class Artist(Spotify):
 
-    def favourite_artist_exists(self):
+    def _favourite_artist_exists(self):
         print('Welcome to the Spotify Song Recommender!\n'
           'We\'ll help you picksome songs that will '
           'become your new favourites!\n\n'
@@ -68,6 +68,17 @@ class Artist(Spotify):
         unique_music_artists = list(set(self.music_artists))
         music_artist = self._favourite(unique_music_artists)
         return music_artist
+
+        
+    def favourite_artist_songs(self):
+        music_artist = self._favourite_artist_exists()
+        indices_of_songs = []
+        for count, value in enumerate(self.music_artists):
+            if value == music_artist:
+                indices_of_songs.append(count)
+        print(indices_of_songs)
+        return music_artist, indices_of_songs
+
     
 class Genre(Spotify):
 
