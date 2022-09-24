@@ -17,6 +17,7 @@ class Spotify:
         also return the database
         '''
         spotify_df = pd.read_csv('SpotifyFeatures.csv')
+        spotify_df = spotify_df.drop(columns=['valence', 'time_signature', 'speechiness', 'mode', 'loudness', 'liveness', 'key', 'energy', 'acousticness', 'track_id'])
         return spotify_df
 
 
@@ -147,7 +148,9 @@ class Track(Spotify):
             print(f'\nThe following tracks exist from {singer}\n')
             tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
             print(tracks_to_print + '\n\n')
-        print('\nThe track list is too long to print.\nGuess a song to see if'
+            print('\nType in one of the above songs: (Make sure it is spelt correctly)')
+        else:
+            print('\nThe track list is too long to print.\nGuess a song to see if'
               ' it is in the list: (Make sure it is spelt correctly)')
         track = self._favourite(list_of_tracks)
         return track, list_of_tracks_not_unique

@@ -17,10 +17,11 @@ GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
 def operation(df, mood_keyword, operator_value, equal):
+    '''docstring'''
     if operator_value == ">":
         mood_dataframe = df[operator.gt(df[mood_keyword], equal)]
     elif operator_value == "<":
-        mood_dataframe = df[operator.gt(df[mood_keyword], equal)]
+        mood_dataframe = df[operator.lt(df[mood_keyword], equal)]
     return mood_dataframe
 
 def make_song_recommendations(favourite_singer, singer_song_indices, favourite_genre, favourite_track, tracks_similar, mood):
@@ -34,10 +35,15 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
     indices_of_songs_tracks = tracks_similar.keys()
     track_songs = df.loc[indices_of_songs_tracks]
     list_of_songs_to_choose_from = pd.concat([singer_songs, genre_songs, track_songs], ignore_index=True, axis=0)
-    print(list_of_songs_to_choose_from)
-    # from those rows, get all that fit mood
-
-# randomly select up to 20 to be returned
+    moods = list(mood.keys())
+    how_you_feel = list(mood.values())
+    dance_songs = operation(list_of_songs_to_choose_from, moods[0], how_you_feel[0], 0.5)
+    focus_songs = operation(dance_songs, moods[1], how_you_feel[1], 0.5)
+    recommendations = operation(focus_songs, moods[2], how_you_feel[2], 50)
+    # recommendations = pd.concat([dance_songs, focus_songs, popular_songs], ignore_index=True, axis=0)
+    if recommendations.shape[0] > 20:
+        recommendations = recommendations.sample(20)
+    print(recommendations)
 
 # paste name and some details of each on terminal 1 at a time - use Track class to save details
 
