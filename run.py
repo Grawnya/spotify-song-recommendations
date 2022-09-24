@@ -16,6 +16,13 @@ SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
+def operation(df, mood_keyword, operator_value, equal):
+    if operator_value == ">":
+        mood_dataframe = df[operator.gt(df[mood_keyword], equal)]
+    elif operator_value == "<":
+        mood_dataframe = df[operator.gt(df[mood_keyword], equal)]
+    return mood_dataframe
+
 def make_song_recommendations(favourite_singer, singer_song_indices, favourite_genre, favourite_track, tracks_similar, mood):
     '''docstring'''
     df = Spotify().get_spotify_data()
@@ -24,12 +31,12 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
     # get all from genre
     genre_songs = df.loc[df['genre'] == favourite_genre]
     # get all from similar track
-    indics_of_songs_tracks = tracks_similar.keys()
-    track_songs = df.loc[indics_of_songs_tracks]
+    indices_of_songs_tracks = tracks_similar.keys()
+    track_songs = df.loc[indices_of_songs_tracks]
     list_of_songs_to_choose_from = pd.concat([singer_songs, genre_songs, track_songs], ignore_index=True, axis=0)
     print(list_of_songs_to_choose_from)
     # from those rows, get all that fit mood
-    # remove favourite track
+
 # randomly select up to 20 to be returned
 
 # paste name and some details of each on terminal 1 at a time - use Track class to save details
