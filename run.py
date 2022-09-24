@@ -38,12 +38,13 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
     moods = list(mood.keys())
     how_you_feel = list(mood.values())
     dance_songs = operation(list_of_songs_to_choose_from, moods[0], how_you_feel[0], 0.5)
-    focus_songs = operation(dance_songs, moods[1], how_you_feel[1], 0.5)
-    recommendations = operation(focus_songs, moods[2], how_you_feel[2], 50)
-    # recommendations = pd.concat([dance_songs, focus_songs, popular_songs], ignore_index=True, axis=0)
+    dance_and_focus_songs = operation(dance_songs, moods[1], how_you_feel[1], 0.5)
+    recommendations = operation(dance_and_focus_songs, moods[2], how_you_feel[2], 50)
+    if recommendations.shape[0] == 0:
+        recommendations = list_of_songs_to_choose_from
     if recommendations.shape[0] > 20:
         recommendations = recommendations.sample(20)
-    print(recommendations)
+    return recommendations
 
 # paste name and some details of each on terminal 1 at a time - use Track class to save details
 
