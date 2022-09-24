@@ -1,7 +1,6 @@
 import string
 import gspread
 import readline
-import webbrowser
 import pandas as pd
 from spotify import *
 from google.oauth2.service_account import Credentials
@@ -47,10 +46,26 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
         recommendations = recommendations.sample(20)
     return recommendations
 
-# paste name and some details of each on terminal 1 at a time - use Track class to save details
-# ask for another one
+def print_values(recommendations_df, play_again):
+    '''docstring'''
+    print('Here is the first recommendation:\n')
+    for index, row in df.iterrows():
+        print(f'Song Name: {row.track_name}')
+        print(f'Artist Name: {row.artist_name}')
+        print(f'Song Duration: {row.duration_ms // 60000} minutes and {row.duration_ms % 60000} seconds')
+        if index != len(recommendations_df.index) - 1:
+            ask = input('Another one?... That is song recommendation: y or n\n')
+            another_one = Spotify()._closed_question_answer_checks(ask)
+            if another_one == 'y':
+                print('\n')
+            else:
+                break
+    playing_again = input('Thanks for playing! Do you want to play again: y or n\n')
+    playing_again_check = Spotify()._closed_question_answer_checks(play_again)
+    if playing_again_check == 'n':
+        play_again = False
+    return play_again
 
-# paste them into google sheet
 def add_to_worksheet(recommendations_df):
     '''docstrings'''
     song_worksheet = SHEET.worksheet('Songs')
@@ -58,22 +73,20 @@ def add_to_worksheet(recommendations_df):
     song_worksheet.update([recommendations_df.columns.values.tolist()] + recommendations_df.values.tolist())
     link_to_google_sheet = r'https://docs.google.com/spreadsheets/d/19APnfM8o7hUttAOnIaQ-mHoGC5tH-BnegAzFkqZ6FLk/edit?usp=sharing'
     print('\nSong recommendations opening up in new tab\n')
-    webbrowser.open(link_to_google_sheet)
     print(link_to_google_sheet)
 
-# open the link in separate tab
-
 # ask to play again
+
 def main():
-    singer, their_song_indices_in_db = Artist().favourite_artist_songs()
-    genre = Genre().favourite_genre()
-    if genre != 'hip-hop':
-        genre = string.capwords(genre)
-    else:
-        genre = 'Hip-Hop'
-    track, similar_tracks = Track().favourite_track()
-    mood = Mood().song_style_questions()
-    songs = make_song_recommendations(singer, their_song_indices_in_db, genre, track, similar_tracks, mood)
-    add_to_worksheet(songs)
+    play_again = True
+    while play_again:
+        singer, their_song_indices_in_db = Artist().favourite_artist_songs()
+        genre = Genre().favourite_genre()
+        track, similar_tracks = Track().favourite_track()
+        mood = Mood().song_style_questions()
+        songs = make_song_recommendations(singer, their_song_indices_in_db, genre, track, similar_tracks, mood)
+        add_to_worksheet(songs)
+        play_again = print_values(songs, play_again)
+    print('\nThanks for playing! If you have any suggestions please send them to https://www.linkedin.com/in/grainne-donegan/')
 
 main()

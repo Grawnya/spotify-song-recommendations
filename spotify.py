@@ -91,6 +91,10 @@ class Genre(Spotify):
         list_of_genres = ', '.join(str(genre) for genre in unique_genres)
         print(list_of_genres + '\n\n')
         genre = self._favourite(unique_genres)
+        if genre != 'hip-hop':
+            genre = string.capwords(genre)
+        else:
+            genre = 'Hip-Hop'
         return genre
     
 
