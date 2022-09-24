@@ -1,7 +1,8 @@
 import string
 import gspread
-import pandas as pd
 import readline
+import webbrowser
+import pandas as pd
 from spotify import *
 from google.oauth2.service_account import Credentials
 
@@ -47,10 +48,18 @@ def make_song_recommendations(favourite_singer, singer_song_indices, favourite_g
     return recommendations
 
 # paste name and some details of each on terminal 1 at a time - use Track class to save details
-
 # ask for another one
 
 # paste them into google sheet
+def add_to_worksheet(recommendations_df):
+    '''docstrings'''
+    song_worksheet = SHEET.worksheet('Songs')
+    song_worksheet.clear()
+    song_worksheet.update([recommendations_df.columns.values.tolist()] + recommendations_df.values.tolist())
+    link_to_google_sheet = r'https://docs.google.com/spreadsheets/d/19APnfM8o7hUttAOnIaQ-mHoGC5tH-BnegAzFkqZ6FLk/edit?usp=sharing'
+    print('\nSong recommendations opening up in new tab\n')
+    webbrowser.open(link_to_google_sheet)
+    print(link_to_google_sheet)
 
 # open the link in separate tab
 
@@ -65,5 +74,6 @@ def main():
     track, similar_tracks = Track().favourite_track()
     mood = Mood().song_style_questions()
     songs = make_song_recommendations(singer, their_song_indices_in_db, genre, track, similar_tracks, mood)
+    add_to_worksheet(songs)
 
 main()
