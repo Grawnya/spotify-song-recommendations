@@ -5,13 +5,13 @@ import pandas as pd
 class Spotify:
 
     def __init__(self):
-        self.spotify_db = self._get_spotify_data()
+        self.spotify_db = self.get_spotify_data()
         self.music_artists = self._format_list_values(self.spotify_db['artist_name'].to_list())
         self.genres = self._format_list_values(self.spotify_db['genre'].to_list())
         self.tracks = self._format_list_values(self.spotify_db['track_name'].to_list())
 
     
-    def _get_spotify_data(self):
+    def get_spotify_data(self):
         '''
         get list of music artists and genres from database and
         also return the database
@@ -131,15 +131,15 @@ class Track(Spotify):
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
         list_of_tracks_not_unique = self._tracks(singer)
-        list_of_tracks = list(set(list_of_tracks_not_unique))
+        list_of_tracks = list(set(list_of_tracks_not_unique.values()))
         if len(list_of_tracks) < 11:
             print(f'\nThe following tracks exist from {singer}\n')
             tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
             print(tracks_to_print + '\n\n')
         print('\nThe track list is too long to print.\nGuess a song to see if'
               ' it is in the list: (Make sure it is spelt correctly)')
-        track = self._favourite(list_of_tracks.values())
-        return track
+        track = self._favourite(list_of_tracks)
+        return track, list_of_tracks_not_unique
 
 class Mood(Spotify):
 
@@ -177,5 +177,4 @@ class Mood(Spotify):
                         ' y or n\n'),
                         'popularity',
                         mood_values)
-        print(mood_values)
         return mood_values
