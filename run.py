@@ -11,8 +11,8 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
-CREDENTIALS = Credentials.from_service_account_file('credentials.json')
-SCOPE_CREDENTIALS = CREDENTIALS.with_scopes(SCOPE)
+CREDS = Credentials.from_service_account_file('creds.json')
+SCOPE_CREDENTIALS = CREDS.with_scopes(SCOPE)
 GSPREAD_AUTHORIZATION = gspread.authorize(SCOPE_CREDENTIALS)
 SHEET = GSPREAD_AUTHORIZATION.open('song_recs')
 
