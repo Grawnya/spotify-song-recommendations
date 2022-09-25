@@ -50,11 +50,11 @@ def make_song_recommendations(favourite_singer, singer_song_indices,
     Parameters:
     favourite_singer (str): Inputted favourite singer value
     singer_song_indices (list): List of indices of all songs the favourite
-                                singer has sang from spotify database
+                                singer has sang from spotify dataset
     favourite_genre (str): Inputted favourite genre value
     favourite_track (str): Inputted favourite track value
     tracks_similar (list): List of all tracks similar to the favourite
-                            track from spotify database
+                            track from spotify dataset
     mood (dict): Dictionary where keys are the mood value column name and
                  the values are the operator based on how they feel
     

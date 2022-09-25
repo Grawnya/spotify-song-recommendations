@@ -3,7 +3,9 @@ import pandas as pd
 
 
 class Spotify:
-    '''docstring'''
+    '''
+    docstring
+    '''
     def __init__(self):
         self.spotify_db = self.get_spotify_data()
         self.artists_to_format = self.spotify_db['artist_name'].to_list()
@@ -15,8 +17,10 @@ class Spotify:
 
     def get_spotify_data(self):
         '''
-        get list of music artists and genres from database and
-        also return the database
+        Get dataframe of all songs from a Spotify dataset valid up to 2019.
+
+        Returns:
+        spotify_df (dataframe): Dataframe of all songs from a Spotify csv file
         '''
         spotify_df = pd.read_csv('SpotifyFeatures.csv')
         spotify_df = spotify_df.drop(columns=['valence', 'time_signature',
@@ -27,7 +31,19 @@ class Spotify:
         return spotify_df
 
     def _format_list_values(self, list_of_values):
-        '''docstring'''
+        '''
+        Makes all inputted values in a list lowercase, strips trailing
+        whitespace and replaces ampersands, apostrophes, fullstops and
+        é (which is very common).
+
+        Parameters:
+        list_of_values (list): List of all the values that will be
+                               formatted
+        
+        Returns:
+        replace_whitespace (list): Cleaned list after whitespace has
+                                   been removed
+        '''
         lower_list = [each.lower() for each in list_of_values]
         replace_and = [each.replace('&', 'and') for each in lower_list]
         replace_apost = [each.replace("'", '') for each in replace_and]
@@ -37,19 +53,36 @@ class Spotify:
         return replace_whitespace
 
     def _favourite(self, list_of_interest):
-        '''docstring'''
+        '''
+        Formats the value of a favourite artist, genre or track and checks
+        if it exists.
+
+        Parameters:
+        list_of_interest (list): List of either the music artists, genres
+                                 or tracks found in the Spotify dataset
+
+        Returns:
+        valid_value (str): The valid music artist, genre or track
+        '''
         value_interest = self._format_list_values([input('\n')])
         while value_interest[0] not in list_of_interest \
                 or value_interest[0] == '':
             value_interest = self._format_list_values([input('Invalid value.'
                                                              ' Enter a new '
                                                              'value:\n')])
-        return (value_interest[0])
+        valid_value = value_interest[0]
+        return valid_value
 
     def _closed_question_answer_checks(self, y_or_n):
         '''
         Checks if the user inputs a valid y (yes) or n (no) value
-        into the terminal
+        into the terminal.
+
+        Parameter:
+        y_or_n (str): Inputted value from the terminal
+
+        Returns:
+        valid_y_or_n (str): Valid "y" or "n"
         '''
         remove_whitespace = y_or_n.replace(' ', '')
         while remove_whitespace.isalpha() is False or \
@@ -61,13 +94,19 @@ class Spotify:
             remove_whitespace = 'y'
         elif remove_whitespace.lower() == 'no':
             remove_whitespace = 'n'
-        return remove_whitespace.lower()
+        valid_y_or_n = remove_whitespace.lower()
+        return valid_y_or_n
 
 
 class Artist(Spotify):
     '''docstring'''
     def _favourite_artist_exists(self):
-        '''docstring'''
+        '''
+        Check if the artist exists in the Spotify dataset.
+
+        Returns:
+        music_artist (str): A valid music artist from the spotify dataset
+        '''
         print('\nWelcome to the Spotify Song Recommender!\n'
               'We\'ll help you pick some songs that will '
               'become your new favourites from our database'
@@ -81,7 +120,14 @@ class Artist(Spotify):
         return music_artist
 
     def favourite_artist_songs(self):
-        '''docstring'''
+        '''
+        Gets a list of the indices of all the songs from the user's
+        favourite artist.
+
+        Returns:
+        music_artist (str): A valid music artist from the spotify dataset
+        indices_of_songs (list): List of indices of all the artist's songs
+        '''
         music_artist = self._favourite_artist_exists()
         indices_of_songs = []
         for count, value in enumerate(self.music_artists):
@@ -93,7 +139,12 @@ class Artist(Spotify):
 class Genre(Spotify):
     '''docstring'''
     def favourite_genre(self):
-        '''docstring'''
+        '''
+        Prints a list of all valid genres and returns a valid inputted genre.
+
+        Returns:
+        genre (str): A valid genre from the spotify dataset
+        '''
         print('\nNext up is pick your favourite genre. '
               'Pick from one of the following:\n')
         unique_genres = list(set(self.genres))
@@ -110,7 +161,16 @@ class Genre(Spotify):
 class Track(Spotify):
     '''docstring'''
     def _song_position(self, artist):
-        '''docstring'''
+        '''
+        Gets a list of the indices of all the songs from the inputted
+        artist.
+
+        Parameters:
+        artist (str): A valid music artist from the spotify dataset
+
+        Returns:
+        artists_track_indices (list): List of indices of the artist's songs
+        '''
         artists_track_indices = []
         i = 0
         for each in self.music_artists:
@@ -120,7 +180,16 @@ class Track(Spotify):
         return artists_track_indices
 
     def _remove_feature(self, song):
-        '''docstring'''
+        '''
+        Removes any featured artists mentioned on a track or any
+        extra song information.
+
+        Parameters:
+        song (str): Song that needs to be formatted
+
+        Returns:
+        song (str): Song that has been stripped of all extra items in title
+        '''
         if '(feat' in song:
             song = song.split('(feat')[0]
         elif 'feat' in song:
@@ -134,7 +203,16 @@ class Track(Spotify):
         return song
 
     def _tracks(self, artist):
-        '''docstring'''
+        '''
+        Gets the track names of an artist as they appear in the
+        Spotify dataset.
+
+        Parameters:
+        artist (str): A valid music artist from the spotify dataset
+
+        Returns:
+        track_names (list): List of all the inputted artist's song titles
+        '''
         appears_in_db = self._song_position(artist)
         print(f'\n{artist} has {len(appears_in_db)} songs in our database')
         track_names = {}
@@ -145,7 +223,16 @@ class Track(Spotify):
         return track_names
 
     def favourite_track(self):
-        '''docstring'''
+        '''
+        Gets a list of all the songs from an inputted artist.
+
+        Returns:
+        track (str): A valid song from the spotify dataset
+        list_of_tracks_not_unique (list): List of all the songs from the artist
+                                          that sang the user's favourite songs.
+                                          Not unique (i.e. potential duplicate)
+                                          in order to keep the indices
+        '''
         print('\nNext step is to search for your favourite song!\n\n'
               'Firstly enter the artist who sings your favourite '
               'song and then we\'ll show you all their songs in '
@@ -175,7 +262,17 @@ class Mood(Spotify):
     def _mood_for(self, question, parameter, mood_values_dict):
         '''
         Asks the user about their mood and set it to
-        a value comparison operator
+        a value comparison operator.
+
+        Parameters:
+        question (str): Question that the user is asked regarding their mood
+        parameter (str): Name of parameter the corresponds to mood and is also
+                         a column name in the Spotify dataset
+        mood_values_dict (dict): A dictionary to add the key-value pair of
+                                 parameter: "value comparison operator"
+        
+        Returns:
+        mood_values_dict (dict): An updated mood_values_dict
         '''
         task_asked_about = self._closed_question_answer_checks(question)
         if task_asked_about == 'y':
@@ -187,8 +284,12 @@ class Mood(Spotify):
 
     def song_style_questions(self):
         '''
-        Asks the user if they want to dance,
-        focus and listen to something popular
+        Asks the user if they want to dance, focus and listen to
+        something popular and stores the response.
+
+        Returns:
+        mood_values (dict): A dictionary with key-value pairs of
+                            parameter: "value comparison operator"
         '''
         print('\n\nWe just need to ask a few more questions to pick out'
               '\nthe perfect songs for you!\n'
