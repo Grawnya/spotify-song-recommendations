@@ -34,7 +34,7 @@ class Spotify:
                                               'energy', 'acousticness',
                                               'track_id'])
         return spotify_df
-    
+
     def _closed_question_answer_checks(self, y_or_n):
         '''
         Checks if the user inputs a valid y (yes) or n (no) value
@@ -89,7 +89,7 @@ class Spotify:
         Parameters:
         list_of_values (list): List of all the values that will be
                                formatted
-        
+
         Returns:
         replace_whitespace (list): Cleaned list after whitespace has
                                    been removed
@@ -140,7 +140,7 @@ class Artist(Spotify):
               'become your new favourites from our database'
               ' of over 200,000 songs!\n\n'
               'Firstly we need to ask you some questions!'
-              '\n1. Who is your favourite music artist?\n'
+              '\nWho is your favourite music artist?\n'
               'Examples include Cardi B, The 1975 and '
               'Beyonce:')
         unique_music_artists = list(set(self.music_artists))
@@ -262,7 +262,6 @@ class Track(Spotify):
             i += 1
         return artists_track_indices
 
-
     def _tracks(self, artist):
         '''
         Gets the track names of an artist as they appear in the
@@ -330,7 +329,7 @@ class Mood(Track):
                          a column name in the Spotify dataset
         mood_values_dict (dict): A dictionary to add the key-value pair of
                                  parameter: "value comparison operator"
-        
+
         Returns:
         mood_values_dict (dict): An updated mood_values_dict
         '''

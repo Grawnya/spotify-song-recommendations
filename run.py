@@ -27,7 +27,7 @@ def operation(df, mood_keyword, operator_value, equal):
     df (dataframe): A Pandas dataframe type - similar to a database
     mood_keyword (str): df column name that matches a mood
     operator_value (str): Type of operator as a string - either "<" or ">"
-    equal (int): median possible value of the mood type - 
+    equal (int): median possible value of the mood type -
                  0.5 for danceability, instrumentalness and 50 for popular
 
     Returns:
@@ -57,7 +57,7 @@ def make_song_recommendations(favourite_singer, singer_song_indices,
                             track from spotify dataset
     mood (dict): Dictionary where keys are the mood value column name and
                  the values are the operator based on how they feel
-    
+
     Returns:
     recommendations (dataframe): Dataframe of up to 20 recommended songs
     '''
@@ -95,7 +95,7 @@ def print_values(recommendations_df, play_again):
 
     Parameters:
     recommendations_df (dataframe): Up to 20 recommended songs dataframe
-    play_again (bool): Original Value if user wants to play again. 
+    play_again (bool): Original Value if user wants to play again.
                        Default is True
 
     Returns:
