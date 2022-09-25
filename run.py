@@ -62,11 +62,8 @@ def make_song_recommendations(favourite_singer, singer_song_indices,
     recommendations (dataframe): Dataframe of up to 20 recommended songs
     '''
     df = Spotify().get_spotify_data()
-    # get all from singer
     singer_songs = df.loc[singer_song_indices]
-    # get all from genre
     genre_songs = df.loc[df['genre'] == favourite_genre]
-    # get all from similar track
     indices_of_songs_tracks = tracks_similar.keys()
     track_songs = df.loc[indices_of_songs_tracks]
     list_of_songs_to_choose_from = pd.concat([singer_songs,
