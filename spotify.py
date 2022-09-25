@@ -207,8 +207,8 @@ class Track(Spotify):
               'An Example is:\nJennifer Lopez\nDance Again\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
-        list_of_tracks_not_unique = self._tracks(singer)
-        list_of_tracks = list(set(list_of_tracks_not_unique.values()))
+        tracks_not_unique = self._tracks(singer)
+        list_of_tracks = list(set(tracks_not_unique.values()))
         if len(list_of_tracks) < 11:
             print(f'\nVersions of the following tracks exist from {singer}\n')
             tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
@@ -295,7 +295,6 @@ class Mood(Track):
         Deduces how much a user wants to dance, focus or listen to
         something popular.
     '''
-
     def song_style_questions(self):
         '''
         Asks the user if they want to dance, focus and listen to
