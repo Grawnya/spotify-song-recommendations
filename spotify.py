@@ -135,7 +135,8 @@ class Artist(Spotify):
         Returns:
         music_artist (str): A valid music artist from the spotify dataset
         '''
-        print('\nWelcome to the Spotify Song Recommender!\n'
+        print('\n***********\n'
+              'Welcome to the Spotify Song Recommender!\n'
               'We\'ll help you pick some songs that will '
               'become your new favourites from our database'
               ' of over 200,000 songs!\n\n'
@@ -202,7 +203,7 @@ class Track(Spotify):
               'song and then we\'ll show you all their songs in '
               'our database. Pick your favourite song or you can '
               'pick another artist if you don\'t like the choice\n'
-              '\nChoose an artist\' discography you want to see:\n')
+              '\nChoose an artist\'s discography you want to see:\n')
         print('An Example is:\nJennifer Lopez\nDance Again\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
