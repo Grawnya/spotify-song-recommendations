@@ -65,8 +65,9 @@ class Spotify:
 
 
 class Artist(Spotify):
-
+    '''docstring'''
     def _favourite_artist_exists(self):
+        '''docstring'''
         print('\nWelcome to the Spotify Song Recommender!\n'
               'We\'ll help you pick some songs that will '
               'become your new favourites from our database'
@@ -150,7 +151,7 @@ class Track(Spotify):
               'song and then we\'ll show you all their songs in '
               'our database. Pick your favourite song or you can '
               'pick another artist if you don\'t like the choice\n'
-              'Choose an artist\' discography you want to see:\n')
+              '\nChoose an artist\' discography you want to see:\n')
         print('An Example is:\nJennifer Lopez\nDance Again\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
@@ -174,7 +175,7 @@ class Mood(Spotify):
     def _mood_for(self, question, parameter, mood_values_dict):
         '''
         Asks the user about their mood and set it to
-        a value comparison
+        a value comparison operator
         '''
         task_asked_about = self._closed_question_answer_checks(question)
         if task_asked_about == 'y':
