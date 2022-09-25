@@ -86,7 +86,6 @@ class Artist(Spotify):
         for count, value in enumerate(self.music_artists):
             if value == music_artist:
                 indices_of_songs.append(count)
-        print(indices_of_songs)
         return music_artist, indices_of_songs
 
 
@@ -98,7 +97,7 @@ class Genre(Spotify):
               'Pick from one of the following:\n')
         unique_genres = list(set(self.genres))
         list_of_genres = ', '.join(str(genre) for genre in unique_genres)
-        print(list_of_genres + '\n\n')
+        print(list_of_genres + '\n')
         genre = self._favourite(unique_genres)
         if genre != 'hip-hop':
             genre = string.capwords(genre)
@@ -146,12 +145,13 @@ class Track(Spotify):
 
     def favourite_track(self):
         '''docstring'''
-        print('\nNext step is to search for your favourite song!\n'
+        print('\nNext step is to search for your favourite song!\n\n'
               'Firstly enter the artist who sings your favourite '
               'song and then we\'ll show you all their songs in '
               'our database. Pick your favourite song or you can '
               'pick another artist if you don\'t like the choice\n'
-              'Choose an artist\' discography you want to see:')
+              'Choose an artist\' discography you want to see:\n')
+        print('An Example is:\nJennifer Lopez\nDance Again\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
         list_of_tracks_not_unique = self._tracks(singer)

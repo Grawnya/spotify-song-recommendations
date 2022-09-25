@@ -87,7 +87,10 @@ def add_to_worksheet(recommendations_df):
     song_worksheet.clear()
     song_worksheet.update([recommendations_df.columns.values.tolist()] +
                           recommendations_df.values.tolist())
-    print('\nHere is a list of all the recommended songs:\n')
+    print('\nHere is a list of all the recommended songs:')
+    print('To select the link below, do not click on it, but highlight'
+          'it and right click, then select "copy" and then paste the link'
+          'into a new tab')
     link_to_google_sheet = r'https://docs.google.com/spreadsheets/d/19APnfM8o7hUttAOnIaQ-mHoGC5tH-BnegAzFkqZ6FLk/edit?usp=sharing'  # noqa
     print(link_to_google_sheet)
 
