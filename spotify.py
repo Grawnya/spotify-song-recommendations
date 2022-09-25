@@ -1,6 +1,4 @@
 import string
-import operator
-import regex
 import pandas as pd
 
 
@@ -40,9 +38,9 @@ class Spotify:
 
     def _favourite(self, list_of_interest):
         '''docstring'''
-        value_of_interest = self._format_list_values([input('\n')])
-        while value_of_interest[0] not in list_of_interest \
-                or value_of_interest[0] == '':
+        value_interest = self._format_list_values([input('\n')])
+        while value_interest[0] not in list_of_interest \
+                or value_interest[0] == '':
             value_interest = self._format_list_values([input('Invalid value.'
                                                              ' Enter a new '
                                                              'value:\n')])

@@ -1,5 +1,6 @@
 import gspread
 import readline
+import operator
 import pandas as pd
 from spotify import *
 from google.oauth2.service_account import Credentials
