@@ -193,18 +193,18 @@ class Track(Spotify):
 
         Returns:
         track (str): A valid song from the spotify dataset
-        list_of_tracks_not_unique (list): List of all the songs from the artist
-                                          that sang the user's favourite songs.
-                                          Not unique (i.e. potential duplicate)
-                                          in order to keep the indices
+        track_indices (list): List of all the indices of the songs from the
+                              artist that sang the user's favourite songs.
+                              Not unique (i.e. potential duplicate) in order
+                              in order to keep the indices
         '''
         print('\nNext step is to search for your favourite song!\n\n'
               'Firstly enter the artist who sings your favourite '
               'song and then we\'ll show you all their songs in '
               'our database. Pick your favourite song or you can '
               'pick another artist if you don\'t like the choice\n'
-              '\nChoose an artist\'s discography you want to see:\n')
-        print('An Example is:\nJennifer Lopez\nDance Again\n')
+              '\nChoose an artist\'s discography you want to see:\n'
+              'An Example is:\nJennifer Lopez\nDance Again\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
         list_of_tracks_not_unique = self._tracks(singer)
@@ -219,7 +219,8 @@ class Track(Spotify):
             print('\nThe track list is too long to print.\nGuess a song to see'
                   ' if it is in the list: (Make sure it is spelt correctly)')
         track = self._favourite(list_of_tracks)
-        return track, list_of_tracks_not_unique
+        track_indices = list_of_tracks_not_unique.keys()
+        return track, track_indices
 
     def _remove_feature(self, song):
         '''

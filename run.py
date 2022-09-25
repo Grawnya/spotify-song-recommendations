@@ -42,7 +42,7 @@ def operation(df, mood_keyword, operator_value, equal):
 
 def make_song_recommendations(favourite_singer, singer_song_indices,
                               favourite_genre, favourite_track,
-                              tracks_similar, mood):
+                              track_indices, mood):
     '''
     Outputs a dataframe of 20 songs based on inputted singer, genre,
     track and mood values.
@@ -53,8 +53,8 @@ def make_song_recommendations(favourite_singer, singer_song_indices,
                                 singer has sang from spotify dataset
     favourite_genre (str): Inputted favourite genre value
     favourite_track (str): Inputted favourite track value
-    tracks_similar (list): List of all tracks similar to the favourite
-                            track from spotify dataset
+    tracks_indices (list): List of indices of all songs related to favourite
+                           track from spotify dataset
     mood (dict): Dictionary where keys are the mood value column name and
                  the values are the operator based on how they feel
 
@@ -64,8 +64,7 @@ def make_song_recommendations(favourite_singer, singer_song_indices,
     df = Spotify().get_spotify_data()
     singer_songs = df.loc[singer_song_indices]
     genre_songs = df.loc[df['genre'] == favourite_genre]
-    indices_of_songs_tracks = tracks_similar.keys()
-    track_songs = df.loc[indices_of_songs_tracks]
+    track_songs = df.loc[track_indices]
     list_of_songs_to_choose_from = pd.concat([singer_songs,
                                               genre_songs,
                                               track_songs],
@@ -144,10 +143,10 @@ def main():
     while play_again:
         singer, their_song_indices_in_db = Artist().favourite_artist_songs()
         genre = Genre().favourite_genre()
-        track, similar_tracks = Track().favourite_track()
+        track, tracks_indices = Track().favourite_track()
         mood = Mood().song_style_questions()
         songs = make_song_recommendations(singer, their_song_indices_in_db,
-                                          genre, track, similar_tracks, mood)
+                                          genre, track, tracks_indices, mood)
         play_again = print_values(songs, play_again)
     add_to_worksheet(songs)
     print('\nThanks for playing! If you have any suggestions '
