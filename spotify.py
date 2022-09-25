@@ -210,7 +210,7 @@ class Track(Spotify):
         list_of_tracks_not_unique = self._tracks(singer)
         list_of_tracks = list(set(list_of_tracks_not_unique.values()))
         if len(list_of_tracks) < 11:
-            print(f'\nThe following tracks exist from {singer}\n')
+            print(f'\nVersions of the following tracks exist from {singer}\n')
             tracks_to_print = ', '.join(str(each) for each in list_of_tracks)
             print(tracks_to_print + '\n\n')
             print('\nType in one of the above songs: '
