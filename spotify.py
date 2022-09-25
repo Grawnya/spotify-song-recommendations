@@ -4,7 +4,8 @@ import pandas as pd
 
 class Spotify:
     '''
-    docstring
+    A class which represents a spotify element i.e. a genre, music artist,
+    track or mood type - which represents a quality from a song.
     '''
     def __init__(self):
         self.spotify_db = self.get_spotify_data()
@@ -257,7 +258,7 @@ class Track(Spotify):
         return track, list_of_tracks_not_unique
 
 
-class Mood(Spotify):
+class Mood(Track):
     '''docstring'''
     def _mood_for(self, question, parameter, mood_values_dict):
         '''
