@@ -4,8 +4,12 @@ import pandas as pd
 
 class Spotify:
     '''
-    A class which represents a spotify element i.e. a genre, music artist,
-    track or mood type - which represents a quality from a song.
+    A class which represents a spotify element i.e. a genre, music artist
+    or track.
+
+    Methods:
+    get_spotify_data():
+        Gets data from a Spotify dataset of 200,000+ songs.
     '''
     def __init__(self):
         self.spotify_db = self.get_spotify_data()
@@ -30,50 +34,7 @@ class Spotify:
                                               'energy', 'acousticness',
                                               'track_id'])
         return spotify_df
-
-    def _format_list_values(self, list_of_values):
-        '''
-        Makes all inputted values in a list lowercase, strips trailing
-        whitespace and replaces ampersands, apostrophes, fullstops and
-        é (which is very common).
-
-        Parameters:
-        list_of_values (list): List of all the values that will be
-                               formatted
-        
-        Returns:
-        replace_whitespace (list): Cleaned list after whitespace has
-                                   been removed
-        '''
-        lower_list = [each.lower() for each in list_of_values]
-        replace_and = [each.replace('&', 'and') for each in lower_list]
-        replace_apost = [each.replace("'", '') for each in replace_and]
-        replace_full_stop = [each.replace('.', '') for each in replace_apost]
-        replace_e = [each.replace('é', 'e') for each in replace_full_stop]
-        replace_whitespace = [each.strip(' ') for each in replace_e]
-        return replace_whitespace
-
-    def _favourite(self, list_of_interest):
-        '''
-        Formats the value of a favourite artist, genre or track and checks
-        if it exists.
-
-        Parameters:
-        list_of_interest (list): List of either the music artists, genres
-                                 or tracks found in the Spotify dataset
-
-        Returns:
-        valid_value (str): The valid music artist, genre or track
-        '''
-        value_interest = self._format_list_values([input('\n')])
-        while value_interest[0] not in list_of_interest \
-                or value_interest[0] == '':
-            value_interest = self._format_list_values([input('Invalid value.'
-                                                             ' Enter a new '
-                                                             'value:\n')])
-        valid_value = value_interest[0]
-        return valid_value
-
+    
     def _closed_question_answer_checks(self, y_or_n):
         '''
         Checks if the user inputs a valid y (yes) or n (no) value
@@ -98,9 +59,75 @@ class Spotify:
         valid_y_or_n = remove_whitespace.lower()
         return valid_y_or_n
 
+    def _favourite(self, list_of_interest):
+        '''
+        Formats the value of a favourite artist, genre or track and checks
+        if it exists.
+
+        Parameters:
+        list_of_interest (list): List of either the music artists, genres
+                                 or tracks found in the Spotify dataset
+
+        Returns:
+        valid_value (str): The valid music artist, genre or track
+        '''
+        value_interest = self._format_list_values([input('\n')])
+        while value_interest[0] not in list_of_interest \
+                or value_interest[0] == '':
+            value_interest = self._format_list_values([input('Invalid value.'
+                                                             ' Enter a new '
+                                                             'value:\n')])
+        valid_value = value_interest[0]
+        return valid_value
+
+    def _format_list_values(self, list_of_values):
+        '''
+        Makes all inputted values in a list lowercase, strips trailing
+        whitespace and replaces ampersands, apostrophes, fullstops and
+        é (which is very common).
+
+        Parameters:
+        list_of_values (list): List of all the values that will be
+                               formatted
+        
+        Returns:
+        replace_whitespace (list): Cleaned list after whitespace has
+                                   been removed
+        '''
+        lower_list = [each.lower() for each in list_of_values]
+        replace_and = [each.replace('&', 'and') for each in lower_list]
+        replace_apost = [each.replace("'", '') for each in replace_and]
+        replace_full_stop = [each.replace('.', '') for each in replace_apost]
+        replace_e = [each.replace('é', 'e') for each in replace_full_stop]
+        replace_whitespace = [each.strip(' ') for each in replace_e]
+        return replace_whitespace
+
 
 class Artist(Spotify):
-    '''docstring'''
+    '''
+    A subclass of the Spotify class, which represents all the logic
+    applied to a user's favourite music artist.
+
+    Methods:
+    favourite_artist_songs():
+        Gets a list of the user's favourite artist's songs.
+    '''
+    def favourite_artist_songs(self):
+        '''
+        Gets a list of the indices of all the songs from the user's
+        favourite artist.
+
+        Returns:
+        music_artist (str): A valid music artist from the spotify dataset
+        indices_of_songs (list): List of indices of all the artist's songs
+        '''
+        music_artist = self._favourite_artist_exists()
+        indices_of_songs = []
+        for count, value in enumerate(self.music_artists):
+            if value == music_artist:
+                indices_of_songs.append(count)
+        return music_artist, indices_of_songs
+
     def _favourite_artist_exists(self):
         '''
         Check if the artist exists in the Spotify dataset.
@@ -120,25 +147,16 @@ class Artist(Spotify):
         music_artist = self._favourite(unique_music_artists)
         return music_artist
 
-    def favourite_artist_songs(self):
-        '''
-        Gets a list of the indices of all the songs from the user's
-        favourite artist.
-
-        Returns:
-        music_artist (str): A valid music artist from the spotify dataset
-        indices_of_songs (list): List of indices of all the artist's songs
-        '''
-        music_artist = self._favourite_artist_exists()
-        indices_of_songs = []
-        for count, value in enumerate(self.music_artists):
-            if value == music_artist:
-                indices_of_songs.append(count)
-        return music_artist, indices_of_songs
-
 
 class Genre(Spotify):
-    '''docstring'''
+    '''
+    A subclass of the Spotify class, which represents all the logic
+    applied to find a user's favourite genre.
+
+    Methods:
+    favourite_genre():
+        Gets the user's favourite genre.
+    '''
     def favourite_genre(self):
         '''
         Prints a list of all valid genres and returns a valid inputted genre.
@@ -160,69 +178,14 @@ class Genre(Spotify):
 
 
 class Track(Spotify):
-    '''docstring'''
-    def _song_position(self, artist):
-        '''
-        Gets a list of the indices of all the songs from the inputted
-        artist.
+    '''
+    A subclass of the Spotify class, which represents all the logic
+    applied to a user's favourite track/song.
 
-        Parameters:
-        artist (str): A valid music artist from the spotify dataset
-
-        Returns:
-        artists_track_indices (list): List of indices of the artist's songs
-        '''
-        artists_track_indices = []
-        i = 0
-        for each in self.music_artists:
-            if each == artist:
-                artists_track_indices.append(i)
-            i += 1
-        return artists_track_indices
-
-    def _remove_feature(self, song):
-        '''
-        Removes any featured artists mentioned on a track or any
-        extra song information.
-
-        Parameters:
-        song (str): Song that needs to be formatted
-
-        Returns:
-        song (str): Song that has been stripped of all extra items in title
-        '''
-        if '(feat' in song:
-            song = song.split('(feat')[0]
-        elif 'feat' in song:
-            song = song.split('feat')[0]
-        if ' (' in song:
-            song = song.split(' (')[0]
-        if ' -' in song:
-            song = song.split(' -')[0]
-        song.replace('?', '')
-        song = song.strip(' ')
-        return song
-
-    def _tracks(self, artist):
-        '''
-        Gets the track names of an artist as they appear in the
-        Spotify dataset.
-
-        Parameters:
-        artist (str): A valid music artist from the spotify dataset
-
-        Returns:
-        track_names (list): List of all the inputted artist's song titles
-        '''
-        appears_in_db = self._song_position(artist)
-        print(f'\n{artist} has {len(appears_in_db)} songs in our database')
-        track_names = {}
-        for index, song_title in enumerate(self.tracks):
-            if index in appears_in_db:
-                adjusted_song_title = self._remove_feature(song_title)
-                track_names[index] = adjusted_song_title
-        return track_names
-
+    Methods:
+    favourite_track():
+        Gets a list of all the songs from an inputted artist.
+    '''
     def favourite_track(self):
         '''
         Gets a list of all the songs from an inputted artist.
@@ -257,31 +220,80 @@ class Track(Spotify):
         track = self._favourite(list_of_tracks)
         return track, list_of_tracks_not_unique
 
-
-class Mood(Track):
-    '''docstring'''
-    def _mood_for(self, question, parameter, mood_values_dict):
+    def _remove_feature(self, song):
         '''
-        Asks the user about their mood and set it to
-        a value comparison operator.
+        Removes any featured artists mentioned on a track or any
+        extra song information.
 
         Parameters:
-        question (str): Question that the user is asked regarding their mood
-        parameter (str): Name of parameter the corresponds to mood and is also
-                         a column name in the Spotify dataset
-        mood_values_dict (dict): A dictionary to add the key-value pair of
-                                 parameter: "value comparison operator"
-        
+        song (str): Song that needs to be formatted
+
         Returns:
-        mood_values_dict (dict): An updated mood_values_dict
+        song (str): Song that has been stripped of all extra items in title
         '''
-        task_asked_about = self._closed_question_answer_checks(question)
-        if task_asked_about == 'y':
-            task_asked_about = '>'
-        elif task_asked_about == 'n':
-            task_asked_about = '<'
-        mood_values_dict[parameter] = task_asked_about
-        return mood_values_dict
+        if '(feat' in song:
+            song = song.split('(feat')[0]
+        elif 'feat' in song:
+            song = song.split('feat')[0]
+        if ' (' in song:
+            song = song.split(' (')[0]
+        if ' -' in song:
+            song = song.split(' -')[0]
+        song.replace('?', '')
+        song = song.strip(' ')
+        return song
+
+    def _song_position(self, artist):
+        '''
+        Gets a list of the indices of all the songs from the inputted
+        artist.
+
+        Parameters:
+        artist (str): A valid music artist from the spotify dataset
+
+        Returns:
+        artists_track_indices (list): List of indices of the artist's songs
+        '''
+        artists_track_indices = []
+        i = 0
+        for each in self.music_artists:
+            if each == artist:
+                artists_track_indices.append(i)
+            i += 1
+        return artists_track_indices
+
+
+    def _tracks(self, artist):
+        '''
+        Gets the track names of an artist as they appear in the
+        Spotify dataset.
+
+        Parameters:
+        artist (str): A valid music artist from the spotify dataset
+
+        Returns:
+        track_names (list): List of all the inputted artist's song titles
+        '''
+        appears_in_db = self._song_position(artist)
+        print(f'\n{artist} has {len(appears_in_db)} songs in our database')
+        track_names = {}
+        for index, song_title in enumerate(self.tracks):
+            if index in appears_in_db:
+                adjusted_song_title = self._remove_feature(song_title)
+                track_names[index] = adjusted_song_title
+        return track_names
+
+
+class Mood(Track):
+    '''
+    A subclass of the Track class, which represents all the logic
+    applied to a user's mood and its influence on suitable tracks.
+
+    Methods:
+    song_style_questions():
+        Deduces how much a user wants to dance, focus or listen to
+        something popular.
+    '''
 
     def song_style_questions(self):
         '''
@@ -306,3 +318,26 @@ class Mood(Track):
                                        'something popular? y or n\n'),
                                  'popularity', mood_values)
         return mood_values
+
+    def _mood_for(self, question, parameter, mood_values_dict):
+        '''
+        Asks the user about their mood and set it to
+        a value comparison operator.
+
+        Parameters:
+        question (str): Question that the user is asked regarding their mood
+        parameter (str): Name of parameter the corresponds to mood and is also
+                         a column name in the Spotify dataset
+        mood_values_dict (dict): A dictionary to add the key-value pair of
+                                 parameter: "value comparison operator"
+        
+        Returns:
+        mood_values_dict (dict): An updated mood_values_dict
+        '''
+        task_asked_about = self._closed_question_answer_checks(question)
+        if task_asked_about == 'y':
+            task_asked_about = '>'
+        elif task_asked_about == 'n':
+            task_asked_about = '<'
+        mood_values_dict[parameter] = task_asked_about
+        return mood_values_dict
