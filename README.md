@@ -119,7 +119,7 @@ In order to efficiently start creating the application, a basic flow diagram was
 
 As the application began to take a shape, a more in-depth flow chart was created and can be found via the link below:
 
-### [Final Flow Chart](documentation/song-recommendations.pdf "Final Flow Chart")
+[Final Flow Chart](documentation/song_recommendations.pdf "Final Flow Chart")
 
 \
 &nbsp;
