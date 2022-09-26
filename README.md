@@ -58,7 +58,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
             * [First Attempt](#first-attempt "First Attempt")
             * [Final Attempt](#final-attempt "Final Attempt")
     * [Manual Testing](#manual-testing "Manual Testing")	
-
+    * [Testing User Stories](#testing-user-stories "Testing User Stories")
 
 # UX
 
@@ -269,5 +269,27 @@ A pivotal part of programming to ensure an application runs smoothly, manual tes
 	* Verified that if the user wants to play again, the game starts from the start.
 	* Verified that if the user doesn’t want to play again i.e. end the game, a valid Google Sheet link will output onto the terminal and the user will be thanked for playing.
 	* Verified that at the end of the game, the user can find a link to contact the application programmer if they have any feedback or questions.
+\
+&nbsp;
+
+## Testing User Stories 
+1. As a user, I want to get song recommendations from the application based on songs and artists I like.
+	* If the user engages with the questions asked, they’ll get an output of up to 20 questions which have been selected based on the user’s favourite artist, genre, song and how they’re currently feeling.
+
+2. As a user, I want to answer questions that will accurately predict songs that I will like.
+	* From the start of the application, the user is constantly asked questions in order to gauge what their musical taste is and what they want to listen to based on their current mood.
+
+3. As a user, I want to easily use the application and not get confused at any stage of what to do next.
+	* This is vital to keep the user interested in the game. Therefore the game adopts a logical flow where a user can only conduct one task at a time.
+
+4. As a user, I don’t want to constantly input answers to the questions if they are invalid, as the application might be too difficult to use and I could become bored with it.
+	* The [manual testing](#manual-testing "Manual Testing") conducted was deliberately focused on simplifying both the artist and track names to ensure that if the user had the correct name and spelling, that the value would be found, regardless of whitespace, grammatical signs or pressing of an arrow key.
+
+5. As a user, when the game is finished, I want to see my song recommendations in one place so I can add them to an existing playlist or create a new one.
+	* A Google sheet was deliberately used to allow the user to document their final set of song recommendations. It allows the user to see the qualities of the songs they have been recommended and gives them time to write them down or add them to a playlist.
+
+\
+&nbsp;
+[Back to Top](#table-of-contents)
 \
 &nbsp;
