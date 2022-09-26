@@ -345,7 +345,7 @@ Using an `enumerate` statement the matching key-value pair of index: song title 
 **Problem:**
 If an artist is not in the dataset, it will flag an error, as seen in the first image below.
 
-![Invalid Artist](documentation/fixed_by_removing_feature_list.png)
+![Invalid Artist](documentation/invalid_artist.png)
 
 **Cause:**
 This is due to the values in the dataset looking for he identical matching string – no leeway with spelling or character inputs.
