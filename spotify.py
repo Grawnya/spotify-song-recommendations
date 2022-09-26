@@ -203,8 +203,8 @@ class Track(Spotify):
               'song and then we\'ll show you all their songs in '
               'our database. Pick your favourite song or you can '
               'pick another artist if you don\'t like the choice\n'
-              '\nChoose an artist\'s discography you want to see:\n'
-              'An Example is:\nJennifer Lopez\nDance Again\n')
+              'An Example is:\nJennifer Lopez\nDance Again\n'
+              '\nChoose an artist\'s discography you want to see:\n')
         unique_music_artists = list(set(self.music_artists))
         singer = self._favourite(unique_music_artists)
         tracks_not_unique = self._tracks(singer)
