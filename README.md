@@ -71,6 +71,11 @@ The user will be asked to play again, restarting the game if they opt to play ag
 	    * [`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application](#keyboardInterrupt-value-obtained-when-ctrl-+-C-in-the-application "`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application")
     * [Unresolved](#unresolved "Unresolved")
 * [Deployment](#deployment "Deployment")
+* [Credits](#credits "Credits")
+    * [For Code Help and Advice](#for-code-help-and-advice "For Code Help and Advice")
+    * [For Content](#for-content "For Content")
+    * [For Code](#for-code "For Code")
+
 
 # UX
 
@@ -463,6 +468,28 @@ During the process of coding up the website, the code was deployed on Heroku to 
 8. Search for the suitable repository and then connect to it by selecting the “Connect” button.
 9. Scroll down to the bottom of the “Deploy” Page and select the type of deployment you want to conduct. If you opt to “Automatically Deploy”, it will deploy every time you push new code to your repository. Otherwise, you will have to manually deploy, by selecting the button at the bottom of the page.
 10. The application is now deployed!
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Credits
+
+## For Code Help and Advice
+* [Harry Dhillon](https://github.com/Harry-Leepz)
+\
+&nbsp;
+
+## For Content
+* [Kaggle Spotify Dataset]( https://www.kaggle.com/datasets/zaheenhamidani/ultimate-spotify-tracks-db)
+* [To get range of values acceptable for each mood]( https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations)
+
+## For Code
+* [PEP8 Long Line Query](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant
+credentials issue - fixed my creating new credentials and key)
+* [To select 20 random songs from a dataframe]( https://www.geeksforgeeks.org/how-to-randomly-select-rows-from-pandas-dataframe/)
+
 \
 &nbsp;
 [Back to Top](#table-of-contents)
