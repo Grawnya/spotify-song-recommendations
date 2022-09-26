@@ -52,6 +52,11 @@ The user will be asked to play again, restarting the game if they opt to play ag
     * [Languages](#languages "Languages")
     * [Python Libraries and Technologies](#python-libraries-and-technologies "Python Libraries and Technologies")	
     * [Tools](#tools "Tools")
+* [Testing](#testing "Testing")
+    * [Code Validation](#code-validation "Code Validation")
+        * [PEP8 Linter](#pep8-linter "PEP8 Linter")
+            * [First Attempt](#first-attempt "First Attempt")
+            * [Final Attempt](#final-attempt "Final Attempt")
 
 
 
@@ -208,5 +213,21 @@ An additional thank you for playing message is included along with a link to the
 \
 &nbsp;
 [Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Testing
+
+## Code Validation 
+### PEP8 Online Linter
+The supporting Python document with Spotify class information `spotify.py` was often run through a [PEP8 linter](http://pep8online.com/ "PEP8 Linter") to check for any syntax or declaration errors. Below contains the returned results of the script.
+
+#### First Attempt
+Many warning and errors were obtained in the first run through the PEP8 linter. These can be found [here](documentation/pep8_linter). They mainly consisted of lines that were too long, over-indentation or under-indentation of items and then too many or too few blank lines. 
+
+#### Final Attempt
+No issues arose in both `spotify.py` and `run.py`
+
+![PEP8 Linter Final Check](documentation/pep8_spotify_pass.png)
 \
 &nbsp;
