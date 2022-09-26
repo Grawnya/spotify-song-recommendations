@@ -57,7 +57,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
         * [PEP8 Linter](#pep8-linter "PEP8 Linter")
             * [First Attempt](#first-attempt "First Attempt")
             * [Final Attempt](#final-attempt "Final Attempt")
-
+    * [Manual Testing](#manual-testing "Manual Testing")	
 
 
 # UX
@@ -229,5 +229,45 @@ Many warning and errors were obtained in the first run through the PEP8 linter. 
 No issues arose in both `spotify.py` and `run.py`
 
 ![PEP8 Linter Final Check](documentation/pep8_spotify_pass.png)
+\
+&nbsp;
+
+## Manual Testing
+A pivotal part of programming to ensure an application runs smoothly, manual testing took up a large part of time dedicated to the project. Due to errors and bugs found while manually testing, this section will overlap quite heavily with [Bugs](#bugs "Bugs"):
+
+* None “yes” or “no” Inputs:
+	* Verified that the user can’t input arrow keys for values.
+	* Verified that the user can enter a value with or without an apostrophe and/or a full stop.
+	* Verified that the user can’t enter a blank string.
+	* Verified that the user can enter a value that typically has “é” and use “e” instead. Appears to be most common symbol found in popular artists e.g. a user can input “beyonce” and songs for the singer “Beyoncé” will appear.
+	* Verified that if a user has whitespace at the start or trailing after they have entered a word, it will strip the input of it and not throw up an error.
+	* Verified that regardless of the input’s case i.e. lowercase, uppercase or a mix of both, the value will still be read in and found in the Spotify dataset in the accurate column.
+
+* “yes” or “no” Inputs:
+	* Verified that the user can input a space in the word or alongside it and it will still read in the input if accurate.
+	* Verified that the user can enter “yes” or “no” instead of “y” or “n”.
+	* Verified that the user can input “y” or “n” regardless of case.
+
+* Start Application Screen/Choose Favourite Artist:
+	* Verified that the user can input a name into the terminal and if it exists, the script will move onto the next section.
+	* Verified that if the user spells the name of the artist incorrectly or if the artist is not in the Spotify dataset, then an `Invalid Value` error will appear and prompt the user to input a new value.
+
+* Choose Favourite Genre:
+	* Verified that the user can input a genre into the terminal and if it exists, the script will move onto the next section.
+	* Verified that if the user spells the name of the genre incorrectly or if the genre is not in the printed list of genres, then an `Invalid Value` error will appear and prompt the user to input a new value.
+
+* Choose Favourite Track:
+	* Verified that the user can input the artist name of their favourite song into the terminal and if it exists, the script will move onto the song section.
+	* Verified that if the user spells the name of the artist incorrectly or if the artist is not in the Spotify dataset, then an `Invalid Value` error will appear and prompt the user to input a new value.
+	* Verified that the user can input their favourite song into the terminal and if it exists, the script will move onto the song section.
+
+* Choose Mood Values:
+	* Verified that the rules for the closed questions are adopted here.
+
+* Play Again:
+	* Verified that the rules for the closed questions are adopted here.
+	* Verified that if the user wants to play again, the game starts from the start.
+	* Verified that if the user doesn’t want to play again i.e. end the game, a valid Google Sheet link will output onto the terminal and the user will be thanked for playing.
+	* Verified that at the end of the game, the user can find a link to contact the application programmer if they have any feedback or questions.
 \
 &nbsp;
