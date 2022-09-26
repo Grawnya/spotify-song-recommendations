@@ -45,6 +45,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Choose Favourite Genre](#choose-favourite-genre "Choose Favourite Genre")
          * [Choose Favourite Track](#choose-favourite-track "Choose Favourite Track")
          * [Choose Moods](#choose-moods "Choose Moods")
+         * [Print Song Values](#print-song-values "Print Song Values")
 
 # UX
 
@@ -143,6 +144,18 @@ The mood questions are closed answer questions also known as yes/no questions. T
 Providing the user inputs a valid answer, the user is then asked if they want to focus to determine if they want to listen to a song with few words i.e. very instrumental. Following that, the user is asked if they want to listen to a popular song or one that is more niche/not as commonly listened to. This establishes if they want to potentially discover a new artist or if main stream media influences their music choice:
 
 ![Mood Questions](documentation/mood_questions_all.png)
+\
+&nbsp;
+
+### Print Song Values
+If a track is found, the script uses all the inputted collate a small dataset of 20 recommended songs for the user. In order to not overwhelm the user with the entire dataset dumped in the terminal one screen. 
+
+![First Recommendation](documentation/first_recommendation.png)
+
+It prints each recommended song one by one, so the user can document the song’s details and if they want another recommendation, they can let the script know to print the next song details on the terminal by answering “y” or “n”.
+
+![Another Song](documentation/another_song.png)
+
 \
 &nbsp;
 
