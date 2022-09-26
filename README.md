@@ -34,6 +34,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
 
 * [UX](#ux "UX")
     * [User Goals](#user-goals "User Goals")
+    * [User Stories](#user-stories "User Stories")
 
 # UX
 
@@ -43,3 +44,10 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * Logical flow to the game so no confusion about what to do next at any point
 * Answer questions with minimal errors i.e. constant invalid artist names or misspelling.
 * Ability to review recommendations when the game is finished so the user can log them elsewhere or put them into their own Spotify playlists.
+
+## User Stories
+* As a user, I want to get song recommendations from the application based on songs and artists I like.
+* As a user, I want to answer questions that will accurately predict songs that I will like.
+* As a user, I want to easily use the application and not get confused at any stage of what to do next.
+* As a user, I don’t want to constantly input answers to the questions if they are invalid, as the application might be too difficult to use and I could become bored with it.
+* As a user, when the game is finished, I want to see my song recommendations in one place so I can add them to an existing playlist or create a new one.
