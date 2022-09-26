@@ -44,6 +44,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Start Application Screen](#start-application-screen "Start Application Screen")
          * [Choose Favourite Genre](#choose-favourite-genre "Choose Favourite Genre")
          * [Choose Favourite Track](#choose-favourite-track "Choose Favourite Track")
+         * [Choose Moods](#choose-moods "Choose Moods")
 
 # UX
 
@@ -131,3 +132,17 @@ If there are too many songs in the artist’s discography, it just prompts the u
 ![Guess Track](documentation/ask_track_title.png)
 \
 &nbsp;
+
+### Choose Moods
+In order to get an indication of what the user might want to listen to, the script will ask the user a few questions about how they are currently feeling, providing that the track entered was valid.
+
+![Dance Question](documentation/dance_question.png)
+
+The mood questions are closed answer questions also known as yes/no questions. Therefore, a variation of yes or no answers will be question. This will be discussed later on in the [Manual Testing](#manual-testing "Manual Testing") section. 
+
+Providing the user inputs a valid answer, the user is then asked if they want to focus to determine if they want to listen to a song with few words i.e. very instrumental. Following that, the user is asked if they want to listen to a popular song or one that is more niche/not as commonly listened to. This establishes if they want to potentially discover a new artist or if main stream media influences their music choice:
+
+![Mood Questions](documentation/mood_questions_all.png)
+\
+&nbsp;
+
