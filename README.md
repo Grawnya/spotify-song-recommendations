@@ -39,6 +39,9 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Requirements](#requirements)
          * [Expectations](#expectations)
 * [Initial Planning](#initial-planning "Initial Planning")
+* [Features](#features "Features")
+    * [Existing Features](#existing-features "Existing Features")
+         * [Start Application Screen]#start-application-screen "Start Application Screen")
 
 
 # UX
@@ -91,5 +94,17 @@ As the application began to take a shape, a more in-depth flow chart was created
 \
 &nbsp;
 [Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Features
+
+## Existing Features
+### Start Application Screen
+The application starts by welcoming the user and letting them know that there is an extensive database of songs that the programme can select from, which will effectively make suggested recommendations. It tells the user that in order to make recommendations, they must answer some questions.
+
+The first questions asks the user to enter the name of their favourite artist, while providing some examples to get them started, as seen below.
+
+![Start Application Screen](documentation/start_app_screen.png)
 \
 &nbsp;
