@@ -239,6 +239,8 @@ class Track(Spotify):
             song = song.split('feat')[0]
         if ' (' in song:
             song = song.split(' (')[0]
+        if ' [' in song:
+            song = song.split(' [')[0]
         if ' -' in song:
             song = song.split(' -')[0]
         song.replace('?', '')

@@ -59,6 +59,17 @@ The user will be asked to play again, restarting the game if they opt to play ag
             * [Final Attempt](#final-attempt "Final Attempt")
     * [Manual Testing](#manual-testing "Manual Testing")	
     * [Testing User Stories](#testing-user-stories "Testing User Stories")
+* [Bugs](#bugs "Bugs")
+    * [Resolved](#resolved "Resolved")
+        * [API Credentials for Google Drive not Working](#api-credentials-for-google-drive-not-working "API Credentials for Google Drive not Working")
+        * [Only Logging First Index of Favourite Artist's Songs when Looping through Entire List of Music Artists in the Spotify Dataset](#only-logging-first-index-of-favourite-artists-songs-when-looping-through-entire-list-of-music-artists-in-the-spotify-dataset "Only Logging First Index of Favourite Artist's Songs when Looping through Entire List of Music Artists in the Spotify Dataset")
+        * [If Symbols or Whitespace are not Removed, it will cause an Error](#if-symbols-or-whitespace-are-not-removed-it-will-cause-an-error "If Symbols or Whitespace are not Removed, it will cause an Error")
+        * [Artists Featured in a Song or Extra Details in title cause an `invalid value` error](#artists-featured-in-a-song-or-extra-details-in-title-cause-an-invalid-value-error "Artists Featured in a Song or Extra Details in title cause an `invalid value` error")
+	    * [Arrow Keys cause an Error in Values](#arrow-keys-cause-an-error-in-values "Arrow Keys cause an Error in Values")
+	    * [The Recommendations Dataframe is Empty](#the-recommendations-dataframe-is-empty "The Recommendations Dataframe is Empty")
+	    * [Long URL causing error in PEP8 Linter](#long-url-causing-error-in-pep8-linter "Long URL causing error in PEP8 Linter")
+	    * [`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application](#keyboardInterrupt-value-obtained-when-ctrl-+-C-in-the-application "`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application")
+
 
 # UX
 
@@ -287,6 +298,138 @@ A pivotal part of programming to ensure an application runs smoothly, manual tes
 
 5. As a user, when the game is finished, I want to see my song recommendations in one place so I can add them to an existing playlist or create a new one.
 	* A Google sheet was deliberately used to allow the user to document their final set of song recommendations. It allows the user to see the qualities of the songs they have been recommended and gives them time to write them down or add them to a playlist.
+
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Bugs
+
+## Resolved
+### API Credentials for Google Drive not Working
+**Problem:**
+The script was not running on the deployed website and was logging an error in the terminal that the credentials couldn’t be found.
+
+![API Credentials Not Found](documentation/credentials_issue.png)
+
+**Cause:**
+The Google Drive API credentials couldn’t be found in the repository.
+
+**Resolution:**
+By getting new credentials and a new API key, the new json formatted details replaced the old credentials and the script began to work again.
+
+### Only Logging First Index of Favourite Artist’s Songs when Looping through Entire List of Music Artists in the Spotify Dataset
+**Problem:**
+When trying to get the indices of every song that the user’s favourite singer has sung, only the first index appears.
+
+**Cause:**
+Even though the script goes through every row in the dataframe, if calling the index of where the singer appears in a column, it always returns the first value.
+
+**Resolution:** 
+Using an `enumerate` statement the matching key-value pair of index: song title were added to a dictionary to ensure that each index had a unique song title value.
+
+**Fix:**
+\
+&nbsp;
+![Fixed enumerate Statement](documentation/fix_appending_same_song_index.png)
+
+### If Symbols or Whitespace are not Removed, it will cause an Error
+**Problem:**
+If an artist is not in the dataset, it will flag an error, as seen in the first image below.
+
+![Invalid Artist](documentation/fixed_by_removing_feature_list.png)
+
+**Cause:**
+This is due to the values in the dataset looking for he identical matching string – no leeway with spelling or character inputs.
+
+**Resolution:**
+Format the entire dataset values and the inputs from the user, as seen in the [Manual Testing](#manual-testing "Manual Testing") section, which allow for the following.
+
+**Fix:**
+\
+&nbsp;
+**Picks Up Genuine Error If Not a Value in a List**
+![Picks Up Error If Not in List](documentation/picks_up_error_if_not_in_list.png)
+
+**Ignores Trailing Whitespace**
+![Ignores Trailing Whitespace](documentation/strips_while_space.png)
+
+**Ignores Apostrophes**
+![Ignores Apostrophes](documentation/strips_apostrophes.png)
+
+### Artists Featured in a Song or Extra Details in title cause an `invalid value` error
+**Problem:**
+Even though the main part of the song matches what the user has put in, if it is a niche remix, contains extra song details in the song title e.g. “She Wolf (Falling to Pieces) [feat. Sia]
+
+**Cause:**
+The official song title might be slightly different than the commonly known one, as not everyone knows the long series of featured artists in a song.
+
+**Resolution:**
+Create a function that rids all common symbols from a song.
+
+**Fix:**
+\
+&nbsp;
+![Feat Song Fix](documentation/fixed_by_removing_feature_list.png)
+
+### Arrow Keys cause an Error in Values
+**Problem:**
+Every time the user presses an arrow key, up appears a “^” followed by 2 square brackets and a letter corresponding to the direction of the arrow key.
+
+![Arrow Keys Appearing](documentation/arrow_keys_error.png)
+
+**Cause:**
+No library or technology is used to block the use of arrow key values in the terminal.
+
+**Resolution:**
+Import the `readline` library, which doesn’t allow keys that are not one of the following numerical, alphabetical, symbolic or certain keys like “return” or “space”.
+
+### The Recommendations Dataframe is Empty	
+**Problem:**
+If the user’s taste is too niche i.e. very few related sings to their genre, favourite artist, favourite song and all 3 mood values, there is potential for an empty dataset to be returned.
+
+**Cause:**
+The user’s niche music taste.
+
+**Resolution:**
+Set the recommendations dataset to that equal to the one before the mood values influenced the dataframe. It cannot be equal since it is a dataset of all the favourite artist’s songs, related songs to the user’s favourite song and all the songs of their favourite genre.
+
+### Long URL causing error in PEP8 Linter	
+**Problem:**
+When checking if the programming scripts align with PEP8, the code validation section fails on the long link line.
+
+**Cause:**
+The line is longer than the 79 characters that PEP8 typically allows.
+
+**Resolution:**
+PEP8 claims that the user can ignore the rule in special circumstances e.g. not to break up a link and can use # noqa at the end of the line.
+
+\
+&nbsp;
+
+## Unresolved
+None – but attempted to create a leaderboard, but when running the game nested arrays were obtained as results, which led to the creation of lots of rows in a table rather than only the top 5 results. Due to submission deadline approaching, I opted to leave out feature, but it will be added in the future.
+
+### `KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application
+**Problem:**
+Every time the user presses ctrl + C, the application automatically stops, which isn’t useful if the user tries to copy the Google Sheet link without following the provided instructions.
+
+**Cause:**
+`ctrl` + `C` automatically stops the script from running.
+
+**Resolution:**
+Use a try/except element to catch the error and start the game again, as seen below.
+
+**Fix:**
+\
+&nbsp;
+**Catch KeyboardInterrupt Function**
+![Catch KeyboardInterrupt Function](documentation/catch_keyboardInterrupt_error.png)
+
+**Catch KeyboardInterrupt in Application**
+![Catch KeyboardInterrupt in Application](documentation/keyboard_interrupt.png)
 
 \
 &nbsp;
