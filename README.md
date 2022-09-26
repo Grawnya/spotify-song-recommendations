@@ -37,6 +37,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
     * [User Stories](#user-stories "User Stories")
     * [User Requirements and Expectations](#user-requirements-and-expectations)
          * [Requirements](#requirements)
+         * [Expectations](#expectations)
 
 
 # UX
@@ -61,3 +62,15 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * Present introductory sentences in basic English to make the application more accessible.
 * Let the user know if the artist, genre or track value entered into the terminal exists in the dataset.
 * Entice the user to play again due to the excitement associated with getting new track recommendations.
+
+### Expectations
+* I expect the application to flow nicely with a clear, logical progression of the application.
+* I expect the website to be completely responsive to all inputs, whether they are values in the dataset or answers to closed yes or no questions.
+* I anticipate that the user might want to play again and will build that functionality into the application.
+
+
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
