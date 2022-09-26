@@ -48,7 +48,11 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Print Song Values](#print-song-values "Print Song Values")
          * [Play Again](#play-again "Play Again")
     * [Features to be Implemented](#features-to-be-implemented "Features to be Implemented")
-    
+* [Technologies Used](#technologies-used "Technologies Used")
+    * [Languages](#languages "Languages")
+    * [Python Libraries and Technologies](#python-libraries-and-technologies "Python Libraries and Technologies")	
+    * [Tools](#tools "Tools")
+
 
 
 # UX
@@ -179,6 +183,28 @@ An additional thank you for playing message is included along with a link to the
 * Refine the process by storing the song recommendation data and asking the users some questions about themselves, so data analytics can be used to determine what songs are most popular amongst a certain demographic.
 * Ask the user if they were happy or not with the recommendation. Could use Machine Learning to produce more effective recommendations.
 * Build on the project with the Spotify API, as it has more functions and a greater database of all possible songs on their platform, whereas there’s only just over 200,000 in the dataset used for this application.
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Technologies Used
+## Languages
+* [Python]( https://en.wikipedia.org/wiki/Python_(programming_language) "Python")
+
+## Python Libraries and Technologies
+* [gspread](https://docs.gspread.org/en/v5.4.0/ "gspread")
+* [readline](https://docs.python.org/3/library/readline.html "readline")
+* [operator](https://docs.python.org/3/library/operator.html "operator")
+* [pandas](https://pandas.pydata.org/ "pandas")
+* [string](https://docs.python.org/3/library/string.html "string")
+* [Google Drive API]( https://developers.google.com/drive/api/quickstart/python "Google Drive API")
+
+## Tools
+* [Gitpod](https://www.gitpod.io/ "Gitpod")
+* [GitHub](https://github.com/ "GitHub")
+* [PEP8 Linter](http://pep8online.com/ “PEP8 Linter”)
 \
 &nbsp;
 [Back to Top](#table-of-contents)
