@@ -219,7 +219,7 @@ class Track(Spotify):
             print('\nThe track list is too long to print.\nGuess a song to see'
                   ' if it is in the list: (Make sure it is spelt correctly)')
         track = self._favourite(list_of_tracks)
-        track_indices = list_of_tracks_not_unique.keys()
+        track_indices = tracks_not_unique.keys()
         return track, track_indices
 
     def _remove_feature(self, song):
