@@ -9,7 +9,7 @@ Welcome to a website dedicated to providing song recommendations for the user us
 
 [Visit the Project's GitHub Repository Here]( https://github.com/Grawnya/spotify-song-recommendations)
 
-![Responsive Display](documentation/responsive-screens.png)
+![Responsive Display](documentation/responsive_screens.png)
 
 
 # How to Use
@@ -29,3 +29,8 @@ Artist Name
 Duration
 
 The user will be asked to play again, restarting the game if they opt to play again. Otherwise, if they don’t want to play again, a link to the most recent recommendations on a Google Sheet is printed out onto the terminal.
+
+# Table of Contents
+
+* [UX](#ux "UX")
+    * [User Goals](#user-goals "User Goals")
