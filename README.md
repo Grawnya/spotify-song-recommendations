@@ -35,6 +35,9 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * [UX](#ux "UX")
     * [User Goals](#user-goals "User Goals")
     * [User Stories](#user-stories "User Stories")
+    * [User Requirements and Expectations](#user-requirements-and-expectations)
+         * [Requirements](#requirements)
+
 
 # UX
 
@@ -51,3 +54,10 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * As a user, I want to easily use the application and not get confused at any stage of what to do next.
 * As a user, I don’t want to constantly input answers to the questions if they are invalid, as the application might be too difficult to use and I could become bored with it.
 * As a user, when the game is finished, I want to see my song recommendations in one place so I can add them to an existing playlist or create a new one.
+
+## User Requirements and Expectations
+### Requirements
+* Easy to navigate or use the application, to prevent confusion.
+* Present introductory sentences in basic English to make the application more accessible.
+* Let the user know if the artist, genre or track value entered into the terminal exists in the dataset.
+* Entice the user to play again due to the excitement associated with getting new track recommendations.
