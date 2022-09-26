@@ -69,7 +69,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
 	    * [The Recommendations Dataframe is Empty](#the-recommendations-dataframe-is-empty "The Recommendations Dataframe is Empty")
 	    * [Long URL causing error in PEP8 Linter](#long-url-causing-error-in-pep8-linter "Long URL causing error in PEP8 Linter")
 	    * [`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application](#keyboardInterrupt-value-obtained-when-ctrl-+-C-in-the-application "`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application")
-
+    * [Unresolved](#unresolved "Unresolved")
 
 # UX
 
@@ -430,6 +430,15 @@ Use a try/except element to catch the error and start the game again, as seen be
 
 **Catch KeyboardInterrupt in Application**
 ![Catch KeyboardInterrupt in Application](documentation/keyboard_interrupt.png)
+
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+## Unresolved
+None – but there was an initial attempt using the Spotify API. However it wouldn’t successfully run and therefore, close to the project deadline, I opted to use an alternative method to recommend songs.
 
 \
 &nbsp;
