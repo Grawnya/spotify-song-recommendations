@@ -46,6 +46,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Choose Favourite Track](#choose-favourite-track "Choose Favourite Track")
          * [Choose Moods](#choose-moods "Choose Moods")
          * [Print Song Values](#print-song-values "Print Song Values")
+         * [Play Again](#play-again "Play Again")
 
 # UX
 
@@ -155,7 +156,18 @@ If a track is found, the script uses all the inputted collate a small dataset of
 It prints each recommended song one by one, so the user can document the song’s details and if they want another recommendation, they can let the script know to print the next song details on the terminal by answering “y” or “n”.
 
 ![Another Song](documentation/another_song.png)
-
 \
 &nbsp;
 
+### Play Again
+If the user opts not to get another song recommendation, they will be asked if they want to restart the application. If they choose to restart the application, it starts from the very start again and makes brand new recommendations, which are not influenced by the previous recommendations.
+
+If the user does not want to play the game again, they can say “n” and the application will provide a link for the user to access a Google Sheet with all the recommended song details. Due to the sensitivity of pressing ctrl + C, which will cause a `keyboardInterrupt` error in the application, an instruction to highlight the link, right click and select “copy” has been provided. This will allow the user to open a new tab and safely enter the link to the Google sheet.
+
+![Google Sheet Link](documentation/google_sheet_link.png)
+
+An additional thank you for playing message is included along with a link to the application programmer’s LinkedIn account if the user wanted to reach out to provide feedback.
+
+![Google Sheet Sample Output](documentation/google_sheet.png)
+\
+&nbsp;
