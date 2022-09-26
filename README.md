@@ -43,6 +43,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
     * [Existing Features](#existing-features "Existing Features")
          * [Start Application Screen](#start-application-screen "Start Application Screen")
          * [Choose Favourite Genre](#choose-favourite-genre "Choose Favourite Genre")
+         * [Choose Favourite Track](#choose-favourite-track "Choose Favourite Track")
 
 # UX
 
@@ -113,5 +114,20 @@ The first questions asks the user to enter the name of their favourite artist, w
 If the user has successfully entered in an artist’s name, who appears in the Spotify dataset, they will move onto the next question, where the user will be asked for the favourite genre of music. A list of valid genre values will be printed on the terminal to aid the user in picking one.
 
 ![Ask for Genre](documentation/ask_genre.png)
+\
+&nbsp;
+
+### Choose Favourite Track
+If the user has successfully entered in a genre, which appears in the Spotify dataset, they will move onto the favourite track section. Firstly, they will type in the artist name who sings their favourite song. This is done to narrow the number of rows that the programme must go through when searching song names and eliminates the confusion of selecting songs with the same title that are completely different:
+
+![Select Track Artist](documentation/ask_track_artist.png)
+
+If the track artist exists, the programme will do 1 of 2 things. If the artist has very few tracks in the dataset i.e. 10 or less, then it will print them onto the terminal:
+
+![Print Tracks](documentation/ask_track_title_less_than_eleven_in_discography.png)
+
+If there are too many songs in the artist’s discography, it just prompts the user to guess:
+
+![Guess Track](documentation/ask_track_title.png)
 \
 &nbsp;
