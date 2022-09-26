@@ -214,13 +214,13 @@ An additional thank you for playing message is included along with a link to the
 * [Python]( https://en.wikipedia.org/wiki/Python_(programming_language) "Python")
 
 ## Python Libraries and Technologies
-* [gspread](https://docs.gspread.org/en/v5.4.0/ "gspread")
-* [readline](https://docs.python.org/3/library/readline.html "readline")
-* [operator](https://docs.python.org/3/library/operator.html "operator")
-* [pandas](https://pandas.pydata.org/ "pandas")
-* [string](https://docs.python.org/3/library/string.html "string")
-* [Google Drive API](https://developers.google.com/drive/api/quickstart/python "Google Drive API")
-* [Google Sheets](https://en.wikipedia.org/wiki/Google_Sheets "Google Sheets")
+* [gspread](https://docs.gspread.org/en/v5.4.0/ "gspread") - To connect to a Google Worksheet and alter data on a particular sheet.
+* [readline](https://docs.python.org/3/library/readline.html "readline") - To prevent arrow keys from appearing in the terminal and influencing the user's input.
+* [operator](https://docs.python.org/3/library/operator.html "operator") - To apply `>`or `<`logic to mood values in the dataset to refine the song recommendations.
+* [pandas](https://pandas.pydata.org/ "pandas") - To read in the spotify dataset and to manipulate dataframes consisting of rows of song data.
+* [string](https://docs.python.org/3/library/string.html "string") - To capitalise the start of each word in the list of genres.
+* [Google Drive API](https://developers.google.com/drive/api/quickstart/python "Google Drive API") - To gain credentials and an API key in order to connect with a Google sheet. 
+* [Google Sheets](https://en.wikipedia.org/wiki/Google_Sheets "Google Sheets") - To paste a dataframe of recommended song information, so it can be easily accessed by a user when they've finished using the application.
 
 ## Tools
 * [Gitpod](https://www.gitpod.io/ "Gitpod")
