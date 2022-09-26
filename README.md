@@ -47,6 +47,9 @@ The user will be asked to play again, restarting the game if they opt to play ag
          * [Choose Moods](#choose-moods "Choose Moods")
          * [Print Song Values](#print-song-values "Print Song Values")
          * [Play Again](#play-again "Play Again")
+    * [Features to be Implemented](#features-to-be-implemented "Features to be Implemented")
+    
+
 
 # UX
 
@@ -169,5 +172,15 @@ If the user does not want to play the game again, they can say “n” and the a
 An additional thank you for playing message is included along with a link to the application programmer’s LinkedIn account if the user wanted to reach out to provide feedback.
 
 ![Google Sheet Sample Output](documentation/google_sheet.png)
+\
+&nbsp;
+
+## Features to be Implemented
+* Refine the process by storing the song recommendation data and asking the users some questions about themselves, so data analytics can be used to determine what songs are most popular amongst a certain demographic.
+* Ask the user if they were happy or not with the recommendation. Could use Machine Learning to produce more effective recommendations.
+* Build on the project with the Spotify API, as it has more functions and a greater database of all possible songs on their platform, whereas there’s only just over 200,000 in the dataset used for this application.
+\
+&nbsp;
+[Back to Top](#table-of-contents)
 \
 &nbsp;
