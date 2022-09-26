@@ -70,6 +70,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
 	    * [Long URL causing error in PEP8 Linter](#long-url-causing-error-in-pep8-linter "Long URL causing error in PEP8 Linter")
 	    * [`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application](#keyboardInterrupt-value-obtained-when-ctrl-+-C-in-the-application "`KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application")
     * [Unresolved](#unresolved "Unresolved")
+* [Deployment](#deployment "Deployment")
 
 # UX
 
@@ -440,6 +441,28 @@ Use a try/except element to catch the error and start the game again, as seen be
 ## Unresolved
 None – but there was an initial attempt using the Spotify API. However it wouldn’t successfully run and therefore, close to the project deadline, I opted to use an alternative method to recommend songs.
 
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Deployment
+
+During the process of coding up the website, the code was deployed on Heroku to allow for continuous manual testing and code validation. The following steps were conducted to deploy the website on Heroku:
+
+1. Create a Heroku account if you don’t have one and login.
+2. Create a new application, by selecting the “new” button on the top right of the dashboard and click “Create new app”.
+3. Choose a unique name for the application and select the region you live in, followed by "Create App".
+4. When the Project’s page opens up, go to the "settings" tab and scroll down to the “Config Vars” section. 
+5. Enter the following key-valuen pairs in the “Config Vars” section: 
+	* Key = PORT : Value = 8000
+	* Key = CREDS : Value = contents of the Google Drive API json API key
+6. Scroll down to the Buildpacks section and select "Add Buildpacks" – adding the Python Buildpack first and the Node.js open next. Make sure the Python buildpack is above the Node.js one.
+7. Go to the “Deploy” tab next and scroll down to the GitHub deployment method.
+8. Search for the suitable repository and then connect to it by selecting the “Connect” button.
+9. Scroll down to the bottom of the “Deploy” Page and select the type of deployment you want to conduct. If you opt to “Automatically Deploy”, it will deploy every time you push new code to your repository. Otherwise, you will have to manually deploy, by selecting the button at the bottom of the page.
+10. The application is now deployed!
 \
 &nbsp;
 [Back to Top](#table-of-contents)
