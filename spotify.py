@@ -74,9 +74,10 @@ class Spotify:
         value_interest = self._format_list_values([input('\n')])
         while value_interest[0] not in list_of_interest \
                 or value_interest[0] == '':
-            value_interest = self._format_list_values([input('Invalid value.'
-                                                             ' Enter a new '
-                                                             'value:\n')])
+            value_to_correct = [input('Value either does not exist or '
+                                      'you have misspelled it. Enter a '
+                                      'new value:\n')]
+            value_interest = self._format_list_values(value_to_correct)
         valid_value = value_interest[0]
         return valid_value
 
