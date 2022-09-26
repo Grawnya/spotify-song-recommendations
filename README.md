@@ -34,3 +34,12 @@ The user will be asked to play again, restarting the game if they opt to play ag
 
 * [UX](#ux "UX")
     * [User Goals](#user-goals "User Goals")
+
+# UX
+
+## User Goals
+* Provide song recommendations based on existing taste
+* Questions asked to grasp an accurate sense of mood and taste
+* Logical flow to the game so no confusion about what to do next at any point
+* Answer questions with minimal errors i.e. constant invalid artist names or misspelling.
+* Ability to review recommendations when the game is finished so the user can log them elsewhere or put them into their own Spotify playlists.
