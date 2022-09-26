@@ -88,7 +88,6 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * I expect the website to be completely responsive to all inputs, whether they are values in the dataset or answers to closed yes or no questions.
 * I anticipate that the user might want to play again and will build that functionality into the application.
 
-
 \
 &nbsp;
 [Back to Top](#table-of-contents)
@@ -104,8 +103,6 @@ In order to efficiently start creating the application, a basic flow diagram was
 As the application began to take a shape, a more in-depth flow chart was created and can be found via the link below:
 
 ### [Final Flow Chart](documentation/song-recommendations.pdf "Final Flow Chart")
-
-
 
 \
 &nbsp;
@@ -188,6 +185,7 @@ An additional thank you for playing message is included along with a link to the
 * Refine the process by storing the song recommendation data and asking the users some questions about themselves, so data analytics can be used to determine what songs are most popular amongst a certain demographic.
 * Ask the user if they were happy or not with the recommendation. Could use Machine Learning to produce more effective recommendations.
 * Build on the project with the Spotify API, as it has more functions and a greater database of all possible songs on their platform, whereas there’s only just over 200,000 in the dataset used for this application.
+
 \
 &nbsp;
 [Back to Top](#table-of-contents)
@@ -204,12 +202,14 @@ An additional thank you for playing message is included along with a link to the
 * [operator](https://docs.python.org/3/library/operator.html "operator")
 * [pandas](https://pandas.pydata.org/ "pandas")
 * [string](https://docs.python.org/3/library/string.html "string")
-* [Google Drive API]( https://developers.google.com/drive/api/quickstart/python "Google Drive API")
+* [Google Drive API](https://developers.google.com/drive/api/quickstart/python "Google Drive API")
+* [Google Sheets](https://en.wikipedia.org/wiki/Google_Sheets "Google Sheets")
 
 ## Tools
 * [Gitpod](https://www.gitpod.io/ "Gitpod")
 * [GitHub](https://github.com/ "GitHub")
-* [PEP8 Linter](http://pep8online.com/ “PEP8 Linter”)
+* [PEP8 Linter](http://pep8online.com/ "PEP8 Linter")
+
 \
 &nbsp;
 [Back to Top](#table-of-contents)
