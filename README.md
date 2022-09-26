@@ -188,7 +188,7 @@ It prints each recommended song one by one, so the user can document the song’
 ### Play Again
 If the user opts not to get another song recommendation, they will be asked if they want to restart the application. If they choose to restart the application, it starts from the very start again and makes brand new recommendations, which are not influenced by the previous recommendations.
 
-If the user does not want to play the game again, they can say “n” and the application will provide a link for the user to access a Google Sheet with all the recommended song details. Due to the sensitivity of pressing ctrl + C, which will cause a `keyboardInterrupt` error in the application, an instruction to highlight the link, right click and select “copy” has been provided. This will allow the user to open a new tab and safely enter the link to the Google sheet.
+If the user does not want to play the game again, they can say “n” and the application will provide a link for the user to access a Google Sheet with all the recommended song details. Due to the sensitivity of pressing `ctrl` + `C`, which will cause a `keyboardInterrupt` error in the application, an instruction to highlight the link, right click and select “copy” has been provided. This will allow the user to open a new tab and safely enter the link to the Google sheet.
 
 ![Google Sheet Link](documentation/google_sheet_link.png)
 
@@ -382,7 +382,7 @@ Create a function that rids all common symbols from a song.
 
 ### Arrow Keys cause an Error in Values
 **Problem:**
-Every time the user presses an arrow key, up appears a “^” followed by 2 square brackets and a letter corresponding to the direction of the arrow key.
+Every time the user presses an arrow key, up appears a `^` followed by 2 square brackets and a letter corresponding to the direction of the arrow key.
 
 ![Arrow Keys Appearing](documentation/arrow_keys_error.png)
 
@@ -390,7 +390,7 @@ Every time the user presses an arrow key, up appears a “^” followed by 2 squ
 No library or technology is used to block the use of arrow key values in the terminal.
 
 **Resolution:**
-Import the `readline` library, which doesn’t allow keys that are not one of the following numerical, alphabetical, symbolic or certain keys like “return” or “space”.
+Import the `readline` library, which doesn’t allow keys that are not one of the following numerical, alphabetical, symbolic or certain keys like `return` or `space`.
 
 ### The Recommendations Dataframe is Empty	
 **Problem:**
@@ -410,17 +410,11 @@ When checking if the programming scripts align with PEP8, the code validation se
 The line is longer than the 79 characters that PEP8 typically allows.
 
 **Resolution:**
-PEP8 claims that the user can ignore the rule in special circumstances e.g. not to break up a link and can use # noqa at the end of the line.
-
-\
-&nbsp;
-
-## Unresolved
-None – but attempted to create a leaderboard, but when running the game nested arrays were obtained as results, which led to the creation of lots of rows in a table rather than only the top 5 results. Due to submission deadline approaching, I opted to leave out feature, but it will be added in the future.
+PEP8 claims that the user can ignore the rule in special circumstances e.g. not to break up a link and can use `# noqa` at the end of the line.
 
 ### `KeyboardInterrupt` Value Obtained when `ctrl` + `C` in the Application
 **Problem:**
-Every time the user presses ctrl + C, the application automatically stops, which isn’t useful if the user tries to copy the Google Sheet link without following the provided instructions.
+Every time the user presses `ctrl` + `C`, the application automatically stops, which isn’t useful if the user tries to copy the Google Sheet link without following the provided instructions.
 
 **Cause:**
 `ctrl` + `C` automatically stops the script from running.
@@ -468,6 +462,7 @@ During the process of coding up the website, the code was deployed on Heroku to 
 8. Search for the suitable repository and then connect to it by selecting the “Connect” button.
 9. Scroll down to the bottom of the “Deploy” Page and select the type of deployment you want to conduct. If you opt to “Automatically Deploy”, it will deploy every time you push new code to your repository. Otherwise, you will have to manually deploy, by selecting the button at the bottom of the page.
 10. The application is now deployed!
+
 \
 &nbsp;
 [Back to Top](#table-of-contents)
@@ -486,8 +481,7 @@ During the process of coding up the website, the code was deployed on Heroku to 
 * [To get range of values acceptable for each mood]( https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations)
 
 ## For Code
-* [PEP8 Long Line Query](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant
-credentials issue - fixed my creating new credentials and key)
+* [PEP8 Long Line Query](https://stackoverflow.com/questions/10739843/how-should-i-format-a-long-url-in-a-python-comment-and-still-be-pep8-compliant)
 * [To select 20 random songs from a dataframe]( https://www.geeksforgeeks.org/how-to-randomly-select-rows-from-pandas-dataframe/)
 
 \
