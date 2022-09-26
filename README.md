@@ -38,6 +38,7 @@ The user will be asked to play again, restarting the game if they opt to play ag
     * [User Requirements and Expectations](#user-requirements-and-expectations)
          * [Requirements](#requirements)
          * [Expectations](#expectations)
+* [Initial Planning](#initial-planning "Initial Planning")
 
 
 # UX
@@ -67,6 +68,24 @@ The user will be asked to play again, restarting the game if they opt to play ag
 * I expect the application to flow nicely with a clear, logical progression of the application.
 * I expect the website to be completely responsive to all inputs, whether they are values in the dataset or answers to closed yes or no questions.
 * I anticipate that the user might want to play again and will build that functionality into the application.
+
+
+\
+&nbsp;
+[Back to Top](#table-of-contents)
+\
+&nbsp;
+
+# Initial Planning
+In order to efficiently start creating the application, a basic flow diagram was created. It was used to dictate the flow of the application and to build the functionality as quickly as possible into the programme:
+
+
+![Starting Flow Chart](documentation/basic_song_recommendation_chart.png "Starting Flow Chart")
+
+As the application began to take a shape, a more in-depth flow chart was created and can be found via the link below:
+
+### [Final Flow Chart](documentation/song-recommendations.pdf "Final Flow Chart")
+
 
 
 \
